@@ -15,3 +15,7 @@ Be aware that i am NOT a swift developer. I am not even a cocoa developer. This 
 6. Open X-Code (binary/syncthing should NOT be marked RED anymore)
 7. Hit the fancy play button :S
 8. it SHOULD run :S
+
+## Demo :O
+
+![alt tag](https://m0ppers.github.io/syncthing-bar.gif)
