@@ -13,7 +13,6 @@
 		F1B0990B1A3C40AD00B79D31 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1B0990A1A3C40AD00B79D31 /* Images.xcassets */; };
 		F1B0990E1A3C40AD00B79D31 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1B0990C1A3C40AD00B79D31 /* Main.storyboard */; };
 		F1B0991A1A3C40AE00B79D31 /* syncthing_barTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B099191A3C40AE00B79D31 /* syncthing_barTests.swift */; };
-		F1B099261A3C49B600B79D31 /* Settings.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1B099251A3C49B600B79D31 /* Settings.xib */; };
 		F1B099281A3C4FA800B79D31 /* LogWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B099271A3C4FA700B79D31 /* LogWindowController.swift */; };
 		F1B0992A1A3C764400B79D31 /* SyncthingRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B099291A3C764400B79D31 /* SyncthingRunner.swift */; };
 		F1B0992C1A3C77FC00B79D31 /* PortFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B0992B1A3C77FC00B79D31 /* PortFinder.swift */; };
@@ -43,7 +42,6 @@
 		F1B099131A3C40AE00B79D31 /* syncthing-barTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "syncthing-barTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1B099181A3C40AE00B79D31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1B099191A3C40AE00B79D31 /* syncthing_barTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = syncthing_barTests.swift; sourceTree = "<group>"; };
-		F1B099251A3C49B600B79D31 /* Settings.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Settings.xib; sourceTree = "<group>"; };
 		F1B099271A3C4FA700B79D31 /* LogWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogWindowController.swift; sourceTree = "<group>"; };
 		F1B099291A3C764400B79D31 /* SyncthingRunner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncthingRunner.swift; sourceTree = "<group>"; };
 		F1B0992B1A3C77FC00B79D31 /* PortFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortFinder.swift; sourceTree = "<group>"; };
@@ -104,7 +102,6 @@
 				F1B0990A1A3C40AD00B79D31 /* Images.xcassets */,
 				F1B0990C1A3C40AD00B79D31 /* Main.storyboard */,
 				F1B099041A3C40AD00B79D31 /* Supporting Files */,
-				F1B099251A3C49B600B79D31 /* Settings.xib */,
 				F1B099271A3C4FA700B79D31 /* LogWindowController.swift */,
 				F1B099291A3C764400B79D31 /* SyncthingRunner.swift */,
 				F1B0992B1A3C77FC00B79D31 /* PortFinder.swift */,
@@ -225,7 +222,6 @@
 				F1B0990B1A3C40AD00B79D31 /* Images.xcassets in Resources */,
 				F1F8A6381A4016180049AFC1 /* LogWindow.xib in Resources */,
 				F1B0990E1A3C40AD00B79D31 /* Main.storyboard in Resources */,
-				F1B099261A3C49B600B79D31 /* Settings.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
