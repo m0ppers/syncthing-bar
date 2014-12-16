@@ -1,0 +1,454 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F11BC9B11A3E20CA00360C2E /* syncthing in Resources */ = {isa = PBXBuildFile; fileRef = F11BC9B01A3E20CA00360C2E /* syncthing */; };
+		F11BC9B31A3E45E100360C2E /* SyncthingFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11BC9B21A3E45E100360C2E /* SyncthingFolder.swift */; };
+		F1B099071A3C40AD00B79D31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B099061A3C40AD00B79D31 /* AppDelegate.swift */; };
+		F1B0990B1A3C40AD00B79D31 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1B0990A1A3C40AD00B79D31 /* Images.xcassets */; };
+		F1B0990E1A3C40AD00B79D31 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1B0990C1A3C40AD00B79D31 /* Main.storyboard */; };
+		F1B0991A1A3C40AE00B79D31 /* syncthing_barTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B099191A3C40AE00B79D31 /* syncthing_barTests.swift */; };
+		F1B099261A3C49B600B79D31 /* Settings.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1B099251A3C49B600B79D31 /* Settings.xib */; };
+		F1B099281A3C4FA800B79D31 /* LogWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B099271A3C4FA700B79D31 /* LogWindowController.swift */; };
+		F1B0992A1A3C764400B79D31 /* SyncthingRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B099291A3C764400B79D31 /* SyncthingRunner.swift */; };
+		F1B0992C1A3C77FC00B79D31 /* PortFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B0992B1A3C77FC00B79D31 /* PortFinder.swift */; };
+		F1C594E51A3ED8830048CF9F /* SyncthingLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C594E41A3ED8830048CF9F /* SyncthingLog.swift */; };
+		F1EE75FA1A3D76B70028E6DD /* SyncthingBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EE75F91A3D76B70028E6DD /* SyncthingBar.swift */; };
+		F1F8A6381A4016180049AFC1 /* LogWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1F8A6371A4016180049AFC1 /* LogWindow.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F1B099141A3C40AE00B79D31 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F1B098F91A3C40AD00B79D31 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F1B099001A3C40AD00B79D31;
+			remoteInfo = "syncthing-bar";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F11BC9B01A3E20CA00360C2E /* syncthing */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = syncthing; sourceTree = "<group>"; };
+		F11BC9B21A3E45E100360C2E /* SyncthingFolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncthingFolder.swift; sourceTree = "<group>"; };
+		F1B099011A3C40AD00B79D31 /* syncthing-bar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "syncthing-bar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1B099051A3C40AD00B79D31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F1B099061A3C40AD00B79D31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F1B0990A1A3C40AD00B79D31 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F1B0990D1A3C40AD00B79D31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F1B099131A3C40AE00B79D31 /* syncthing-barTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "syncthing-barTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1B099181A3C40AE00B79D31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F1B099191A3C40AE00B79D31 /* syncthing_barTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = syncthing_barTests.swift; sourceTree = "<group>"; };
+		F1B099251A3C49B600B79D31 /* Settings.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Settings.xib; sourceTree = "<group>"; };
+		F1B099271A3C4FA700B79D31 /* LogWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogWindowController.swift; sourceTree = "<group>"; };
+		F1B099291A3C764400B79D31 /* SyncthingRunner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncthingRunner.swift; sourceTree = "<group>"; };
+		F1B0992B1A3C77FC00B79D31 /* PortFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortFinder.swift; sourceTree = "<group>"; };
+		F1C594E41A3ED8830048CF9F /* SyncthingLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncthingLog.swift; sourceTree = "<group>"; };
+		F1EE75F91A3D76B70028E6DD /* SyncthingBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncthingBar.swift; sourceTree = "<group>"; };
+		F1F8A6371A4016180049AFC1 /* LogWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogWindow.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F1B098FE1A3C40AD00B79D31 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1B099101A3C40AE00B79D31 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F11BC9AF1A3E202700360C2E /* binary */ = {
+			isa = PBXGroup;
+			children = (
+				F11BC9B01A3E20CA00360C2E /* syncthing */,
+			);
+			name = binary;
+			sourceTree = "<group>";
+		};
+		F1B098F81A3C40AD00B79D31 = {
+			isa = PBXGroup;
+			children = (
+				F11BC9AF1A3E202700360C2E /* binary */,
+				F1B099031A3C40AD00B79D31 /* syncthing-bar */,
+				F1B099161A3C40AE00B79D31 /* syncthing-barTests */,
+				F1B099021A3C40AD00B79D31 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F1B099021A3C40AD00B79D31 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F1B099011A3C40AD00B79D31 /* syncthing-bar.app */,
+				F1B099131A3C40AE00B79D31 /* syncthing-barTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F1B099031A3C40AD00B79D31 /* syncthing-bar */ = {
+			isa = PBXGroup;
+			children = (
+				F1B099061A3C40AD00B79D31 /* AppDelegate.swift */,
+				F1B0990A1A3C40AD00B79D31 /* Images.xcassets */,
+				F1B0990C1A3C40AD00B79D31 /* Main.storyboard */,
+				F1B099041A3C40AD00B79D31 /* Supporting Files */,
+				F1B099251A3C49B600B79D31 /* Settings.xib */,
+				F1B099271A3C4FA700B79D31 /* LogWindowController.swift */,
+				F1B099291A3C764400B79D31 /* SyncthingRunner.swift */,
+				F1B0992B1A3C77FC00B79D31 /* PortFinder.swift */,
+				F1EE75F91A3D76B70028E6DD /* SyncthingBar.swift */,
+				F11BC9B21A3E45E100360C2E /* SyncthingFolder.swift */,
+				F1C594E41A3ED8830048CF9F /* SyncthingLog.swift */,
+				F1F8A6371A4016180049AFC1 /* LogWindow.xib */,
+			);
+			path = "syncthing-bar";
+			sourceTree = "<group>";
+		};
+		F1B099041A3C40AD00B79D31 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F1B099051A3C40AD00B79D31 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F1B099161A3C40AE00B79D31 /* syncthing-barTests */ = {
+			isa = PBXGroup;
+			children = (
+				F1B099191A3C40AE00B79D31 /* syncthing_barTests.swift */,
+				F1B099171A3C40AE00B79D31 /* Supporting Files */,
+			);
+			path = "syncthing-barTests";
+			sourceTree = "<group>";
+		};
+		F1B099171A3C40AE00B79D31 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F1B099181A3C40AE00B79D31 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F1B099001A3C40AD00B79D31 /* syncthing-bar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F1B0991D1A3C40AE00B79D31 /* Build configuration list for PBXNativeTarget "syncthing-bar" */;
+			buildPhases = (
+				F1B098FD1A3C40AD00B79D31 /* Sources */,
+				F1B098FE1A3C40AD00B79D31 /* Frameworks */,
+				F1B098FF1A3C40AD00B79D31 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "syncthing-bar";
+			productName = "syncthing-bar";
+			productReference = F1B099011A3C40AD00B79D31 /* syncthing-bar.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F1B099121A3C40AE00B79D31 /* syncthing-barTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F1B099201A3C40AE00B79D31 /* Build configuration list for PBXNativeTarget "syncthing-barTests" */;
+			buildPhases = (
+				F1B0990F1A3C40AE00B79D31 /* Sources */,
+				F1B099101A3C40AE00B79D31 /* Frameworks */,
+				F1B099111A3C40AE00B79D31 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F1B099151A3C40AE00B79D31 /* PBXTargetDependency */,
+			);
+			name = "syncthing-barTests";
+			productName = "syncthing-barTests";
+			productReference = F1B099131A3C40AE00B79D31 /* syncthing-barTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F1B098F91A3C40AD00B79D31 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = mop;
+				TargetAttributes = {
+					F1B099001A3C40AD00B79D31 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					F1B099121A3C40AE00B79D31 = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = F1B099001A3C40AD00B79D31;
+					};
+				};
+			};
+			buildConfigurationList = F1B098FC1A3C40AD00B79D31 /* Build configuration list for PBXProject "syncthing-bar" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F1B098F81A3C40AD00B79D31;
+			productRefGroup = F1B099021A3C40AD00B79D31 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F1B099001A3C40AD00B79D31 /* syncthing-bar */,
+				F1B099121A3C40AE00B79D31 /* syncthing-barTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F1B098FF1A3C40AD00B79D31 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F11BC9B11A3E20CA00360C2E /* syncthing in Resources */,
+				F1B0990B1A3C40AD00B79D31 /* Images.xcassets in Resources */,
+				F1F8A6381A4016180049AFC1 /* LogWindow.xib in Resources */,
+				F1B0990E1A3C40AD00B79D31 /* Main.storyboard in Resources */,
+				F1B099261A3C49B600B79D31 /* Settings.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1B099111A3C40AE00B79D31 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F1B098FD1A3C40AD00B79D31 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1B0992C1A3C77FC00B79D31 /* PortFinder.swift in Sources */,
+				F1B0992A1A3C764400B79D31 /* SyncthingRunner.swift in Sources */,
+				F1B099281A3C4FA800B79D31 /* LogWindowController.swift in Sources */,
+				F1B099071A3C40AD00B79D31 /* AppDelegate.swift in Sources */,
+				F1EE75FA1A3D76B70028E6DD /* SyncthingBar.swift in Sources */,
+				F1C594E51A3ED8830048CF9F /* SyncthingLog.swift in Sources */,
+				F11BC9B31A3E45E100360C2E /* SyncthingFolder.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1B0990F1A3C40AE00B79D31 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1B0991A1A3C40AE00B79D31 /* syncthing_barTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F1B099151A3C40AE00B79D31 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F1B099001A3C40AD00B79D31 /* syncthing-bar */;
+			targetProxy = F1B099141A3C40AE00B79D31 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F1B0990C1A3C40AD00B79D31 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1B0990D1A3C40AD00B79D31 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F1B0991B1A3C40AE00B79D31 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F1B0991C1A3C40AE00B79D31 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		F1B0991E1A3C40AE00B79D31 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "syncthing-bar/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F1B0991F1A3C40AE00B79D31 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "syncthing-bar/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F1B099211A3C40AE00B79D31 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "syncthing-barTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/syncthing-bar.app/Contents/MacOS/syncthing-bar";
+			};
+			name = Debug;
+		};
+		F1B099221A3C40AE00B79D31 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "syncthing-barTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/syncthing-bar.app/Contents/MacOS/syncthing-bar";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F1B098FC1A3C40AD00B79D31 /* Build configuration list for PBXProject "syncthing-bar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1B0991B1A3C40AE00B79D31 /* Debug */,
+				F1B0991C1A3C40AE00B79D31 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F1B0991D1A3C40AE00B79D31 /* Build configuration list for PBXNativeTarget "syncthing-bar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1B0991E1A3C40AE00B79D31 /* Debug */,
+				F1B0991F1A3C40AE00B79D31 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F1B099201A3C40AE00B79D31 /* Build configuration list for PBXNativeTarget "syncthing-barTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1B099211A3C40AE00B79D31 /* Debug */,
+				F1B099221A3C40AE00B79D31 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F1B098F91A3C40AD00B79D31 /* Project object */;
+}
