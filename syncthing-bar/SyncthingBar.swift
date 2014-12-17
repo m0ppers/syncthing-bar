@@ -23,8 +23,8 @@ class SyncthingBar: NSObject {
         self.log = log
         //Add statusBarItem
         statusBarItem = statusBar.statusItemWithLength(-1)
-        statusBarItem.title = "Syncthing"
         statusBarItem.menu = menu
+        statusBarItem.image = NSImage(named: "syncthing-bar.png")
         
         menu.autoenablesItems = false
         
