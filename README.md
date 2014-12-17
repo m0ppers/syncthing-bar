@@ -19,3 +19,7 @@ Be aware that i am NOT a swift developer. I am not even a cocoa developer. This 
 ## Demo :O
 
 ![alt tag](https://m0ppers.github.io/syncthing-bar.gif)
+
+## Installation Package
+
+[syncthing-bar-0.0.1.pkg](http://m0ppers.github.io/syncthing-bar-0.0.1.pkg)
