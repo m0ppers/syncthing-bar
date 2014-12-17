@@ -25,4 +25,6 @@ When clicking on the statusbar icon it will offer quick access to the UI and wil
 
 ![alt tag](https://m0ppers.github.io/syncthing-bar.gif)
 
+## Installation Package
 
+[syncthing-bar-0.0.1.pkg](http://m0ppers.github.io/syncthing-bar-0.0.1.pkg)
