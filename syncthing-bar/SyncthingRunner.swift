@@ -29,7 +29,11 @@ class SyncthingRunner: NSObject {
     init(log: SyncthingLog) {
         self.log = log
         path = NSBundle.mainBundle().pathForResource("syncthing", ofType: "")!
+        
         super.init()
+    
+        notificationCenter.addObserver(self, selector: "taskStopped:", name: NSTaskDidTerminateNotification, object: task)
+        notificationCenter.addObserver(self, selector: "receivedOut:", name: NSFileHandleDataAvailableNotification, object: nil)
     }
     
     func upgrade() {
@@ -60,9 +64,8 @@ class SyncthingRunner: NSObject {
         task!.arguments = ["-no-browser", "-gui-address=127.0.0.1:\(result.port)"]
         task!.standardOutput = pipe
         readHandle.waitForDataInBackgroundAndNotify()
-        notificationCenter.addObserver(self, selector: "receivedOut:", name: NSFileHandleDataAvailableNotification, object: nil)
         task!.launch()
-        notificationCenter.addObserver(self, selector: "taskStopped:", name: NSTaskDidTerminateNotification, object: task)
+        
         
         // mop: wait until port is open :O
         portOpenTimer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "checkPortOpen:", userInfo: httpData, repeats: true)
@@ -96,7 +99,6 @@ class SyncthingRunner: NSObject {
     }
     
     func collectRepositories(timer: NSTimer) {
-        
         // mop: jaja copy paste...must fix somewhen
         if let info = timer.userInfo as? Dictionary<String,String> {
             let host = info["host"]
@@ -158,6 +160,11 @@ class SyncthingRunner: NSObject {
     }
     
     func taskStopped(sender: AnyObject) {
+        let task = sender.object as NSTask
+        if (task != self.task) {
+            return
+        }
+        
         var httpData = []
         self.notificationCenter.postNotificationName(HttpChanged, object: self)
         
