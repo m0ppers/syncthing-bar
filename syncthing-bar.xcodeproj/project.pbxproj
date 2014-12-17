@@ -18,6 +18,7 @@
 		F1B0992C1A3C77FC00B79D31 /* PortFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B0992B1A3C77FC00B79D31 /* PortFinder.swift */; };
 		F1C594E51A3ED8830048CF9F /* SyncthingLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C594E41A3ED8830048CF9F /* SyncthingLog.swift */; };
 		F1EE75FA1A3D76B70028E6DD /* SyncthingBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EE75F91A3D76B70028E6DD /* SyncthingBar.swift */; };
+		F1F6D6391A41E5A100E972D0 /* syncthing-bar.png in Resources */ = {isa = PBXBuildFile; fileRef = F1F6D6381A41E5A100E972D0 /* syncthing-bar.png */; };
 		F1F8A6381A4016180049AFC1 /* LogWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1F8A6371A4016180049AFC1 /* LogWindow.xib */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		F1B0992B1A3C77FC00B79D31 /* PortFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortFinder.swift; sourceTree = "<group>"; };
 		F1C594E41A3ED8830048CF9F /* SyncthingLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncthingLog.swift; sourceTree = "<group>"; };
 		F1EE75F91A3D76B70028E6DD /* SyncthingBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncthingBar.swift; sourceTree = "<group>"; };
+		F1F6D6381A41E5A100E972D0 /* syncthing-bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "syncthing-bar.png"; sourceTree = "<group>"; };
 		F1F8A6371A4016180049AFC1 /* LogWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogWindow.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,6 +81,7 @@
 		F1B098F81A3C40AD00B79D31 = {
 			isa = PBXGroup;
 			children = (
+				F1F6D6371A41E58400E972D0 /* images */,
 				F11BC9AF1A3E202700360C2E /* binary */,
 				F1B099031A3C40AD00B79D31 /* syncthing-bar */,
 				F1B099161A3C40AE00B79D31 /* syncthing-barTests */,
@@ -136,6 +139,14 @@
 				F1B099181A3C40AE00B79D31 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F1F6D6371A41E58400E972D0 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				F1F6D6381A41E5A100E972D0 /* syncthing-bar.png */,
+			);
+			name = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,6 +231,7 @@
 			files = (
 				F11BC9B11A3E20CA00360C2E /* syncthing in Resources */,
 				F1B0990B1A3C40AD00B79D31 /* Images.xcassets in Resources */,
+				F1F6D6391A41E5A100E972D0 /* syncthing-bar.png in Resources */,
 				F1F8A6381A4016180049AFC1 /* LogWindow.xib in Resources */,
 				F1B0990E1A3C40AD00B79D31 /* Main.storyboard in Resources */,
 			);

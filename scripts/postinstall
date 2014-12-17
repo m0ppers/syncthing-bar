@@ -1,0 +1,17 @@
+#!/usr/bin/env sh
+cat > /Library/LaunchAgents/koeln.mop.syncthing-bar.agent.plist << EOT
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>Label</key>
+        <string>koeln.mop.syncthing-bar.agent</string>
+        <key>ProgramArguments</key>
+        <array>
+            <string>/Applications/syncthing-bar.app/Contents/MacOS/syncthing-bar</string>
+        </array>
+        <key>RunAtLoad</key>
+        <true/>
+    </dict>
+</plist>
+EOT

@@ -1,4 +1,6 @@
 syncthing
+syncthing-bar.plist
+syncthing-bar.pkg
 # Xcode
 .DS_Store
 build/
