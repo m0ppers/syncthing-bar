@@ -10,6 +10,10 @@ Be aware that i am NOT a swift developer. I am not even a cocoa developer. This 
 Syncthing bar has syncthing bundled. Once started it will try to upgrade and then keep the bundled syncthing running. It will automatically select a port.
 When clicking on the statusbar icon it will offer quick access to the UI and will allow you to open any shared folder in finder. Syncthing log may be examined as well. That's it
 
+## Requirements
+
+OS X 10.10 is required
+
 ## To build/run
 
 1. Clone the repository in X-Code
