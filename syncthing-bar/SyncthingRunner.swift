@@ -28,7 +28,7 @@ class SyncthingRunner: NSObject {
 
     init(log: SyncthingLog) {
         self.log = log
-        path = NSBundle.mainBundle().pathForResource("syncthing", ofType: "")!
+        path = NSBundle.mainBundle().pathForResource("syncthing/syncthing", ofType: "")!
         
         super.init()
     

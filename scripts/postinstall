@@ -1,4 +1,6 @@
 #!/usr/bin/env sh
+# hmmm not sure if this is smart...but syncthing needs to be able to update itself :S 777 is of course worst case scenario but i am not sure how to fix it differently
+chmod -R 777 /Applications/syncthing-bar.app/Contents/Resources/syncthing
 cat > /Library/LaunchAgents/koeln.mop.syncthing-bar.agent.plist << EOT
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
