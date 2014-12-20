@@ -27,4 +27,4 @@ When clicking on the statusbar icon it will offer quick access to the UI and wil
 
 ## Installation Package
 
-[syncthing-bar-0.0.1.pkg](http://m0ppers.github.io/syncthing-bar-0.0.1.pkg)
+The latest release can be found on the [releases tab](https://github.com/m0ppers/syncthing-bar/releases)
