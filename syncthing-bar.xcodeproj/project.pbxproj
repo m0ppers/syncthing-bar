@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F11BC9B11A3E20CA00360C2E /* syncthing in Resources */ = {isa = PBXBuildFile; fileRef = F11BC9B01A3E20CA00360C2E /* syncthing */; };
 		F11BC9B31A3E45E100360C2E /* SyncthingFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11BC9B21A3E45E100360C2E /* SyncthingFolder.swift */; };
+		F1A4E42D1A4587C300602986 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1A4E42B1A4587C300602986 /* Main.storyboard */; };
 		F1B099071A3C40AD00B79D31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B099061A3C40AD00B79D31 /* AppDelegate.swift */; };
 		F1B0990B1A3C40AD00B79D31 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1B0990A1A3C40AD00B79D31 /* Images.xcassets */; };
 		F1B0991A1A3C40AE00B79D31 /* syncthing_barTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B099191A3C40AE00B79D31 /* syncthing_barTests.swift */; };
@@ -34,6 +35,7 @@
 /* Begin PBXFileReference section */
 		F11BC9B01A3E20CA00360C2E /* syncthing */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = syncthing; sourceTree = "<group>"; };
 		F11BC9B21A3E45E100360C2E /* SyncthingFolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncthingFolder.swift; sourceTree = "<group>"; };
+		F1A4E42C1A4587C300602986 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "syncthing-bar/Base.lproj/Main.storyboard"; sourceTree = "<group>"; };
 		F1B099011A3C40AD00B79D31 /* syncthing-bar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "syncthing-bar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1B099051A3C40AD00B79D31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1B099061A3C40AD00B79D31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 		F1B099031A3C40AD00B79D31 /* syncthing-bar */ = {
 			isa = PBXGroup;
 			children = (
+				F1A4E42B1A4587C300602986 /* Main.storyboard */,
 				F1B099061A3C40AD00B79D31 /* AppDelegate.swift */,
 				F1B0990A1A3C40AD00B79D31 /* Images.xcassets */,
 				F1B099041A3C40AD00B79D31 /* Supporting Files */,
@@ -227,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F11BC9B11A3E20CA00360C2E /* syncthing in Resources */,
+				F1A4E42D1A4587C300602986 /* Main.storyboard in Resources */,
 				F1B0990B1A3C40AD00B79D31 /* Images.xcassets in Resources */,
 				F1F6D6391A41E5A100E972D0 /* syncthing-bar.png in Resources */,
 				F1F8A6381A4016180049AFC1 /* LogWindow.xib in Resources */,
@@ -274,6 +278,18 @@
 			targetProxy = F1B099141A3C40AE00B79D31 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F1A4E42B1A4587C300602986 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1A4E42C1A4587C300602986 /* Base */,
+			);
+			name = Main.storyboard;
+			path = ..;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		F1B0991B1A3C40AE00B79D31 /* Debug */ = {
