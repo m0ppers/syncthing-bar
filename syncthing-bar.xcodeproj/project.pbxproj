@@ -11,7 +11,6 @@
 		F11BC9B31A3E45E100360C2E /* SyncthingFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11BC9B21A3E45E100360C2E /* SyncthingFolder.swift */; };
 		F1B099071A3C40AD00B79D31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B099061A3C40AD00B79D31 /* AppDelegate.swift */; };
 		F1B0990B1A3C40AD00B79D31 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1B0990A1A3C40AD00B79D31 /* Images.xcassets */; };
-		F1B0990E1A3C40AD00B79D31 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1B0990C1A3C40AD00B79D31 /* Main.storyboard */; };
 		F1B0991A1A3C40AE00B79D31 /* syncthing_barTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B099191A3C40AE00B79D31 /* syncthing_barTests.swift */; };
 		F1B099281A3C4FA800B79D31 /* LogWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B099271A3C4FA700B79D31 /* LogWindowController.swift */; };
 		F1B0992A1A3C764400B79D31 /* SyncthingRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B099291A3C764400B79D31 /* SyncthingRunner.swift */; };
@@ -39,7 +38,6 @@
 		F1B099051A3C40AD00B79D31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1B099061A3C40AD00B79D31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1B0990A1A3C40AD00B79D31 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		F1B0990D1A3C40AD00B79D31 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F1B099131A3C40AE00B79D31 /* syncthing-barTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "syncthing-barTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1B099181A3C40AE00B79D31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1B099191A3C40AE00B79D31 /* syncthing_barTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = syncthing_barTests.swift; sourceTree = "<group>"; };
@@ -103,7 +101,6 @@
 			children = (
 				F1B099061A3C40AD00B79D31 /* AppDelegate.swift */,
 				F1B0990A1A3C40AD00B79D31 /* Images.xcassets */,
-				F1B0990C1A3C40AD00B79D31 /* Main.storyboard */,
 				F1B099041A3C40AD00B79D31 /* Supporting Files */,
 				F1B099271A3C4FA700B79D31 /* LogWindowController.swift */,
 				F1B099291A3C764400B79D31 /* SyncthingRunner.swift */,
@@ -233,7 +230,6 @@
 				F1B0990B1A3C40AD00B79D31 /* Images.xcassets in Resources */,
 				F1F6D6391A41E5A100E972D0 /* syncthing-bar.png in Resources */,
 				F1F8A6381A4016180049AFC1 /* LogWindow.xib in Resources */,
-				F1B0990E1A3C40AD00B79D31 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,17 +274,6 @@
 			targetProxy = F1B099141A3C40AE00B79D31 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		F1B0990C1A3C40AD00B79D31 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F1B0990D1A3C40AD00B79D31 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		F1B0991B1A3C40AE00B79D31 /* Debug */ = {
@@ -375,6 +360,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "syncthing-bar/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -386,6 +372,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "syncthing-bar/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
