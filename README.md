@@ -20,7 +20,7 @@ OS X 10.10 is required
 2. Download syncthing from http://syncthing.net/
 3. Extract the archive
 4. Locate the "syncthing" binary
-5. Copy the binary to your syncthing-bar source repository
+5. Copy the binary to your syncthing-bar source repository in the folder "syncthing"
 6. Open X-Code (binary/syncthing should NOT be marked RED anymore)
 7. Hit the fancy play button :S
 8. it SHOULD run :S
