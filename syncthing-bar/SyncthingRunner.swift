@@ -54,14 +54,10 @@ class SyncthingRunner: NSObject {
         environment["STNORESTART"] =  "1"
         task!.environment = environment
 
-        let result = portFinder.findPort()
-        // mop: ITS GO :O ZOMG!!111
-        if (result.err != nil) {
-            return "Could not find a port!"
-        }
-        let httpData : [String: String] = ["host": "127.0.0.1", "port": String(result.port)];
+        let port = self.port!
+        let httpData : [String: String] = ["host": "127.0.0.1", "port": String(port)];
         
-        task!.arguments = ["-no-browser", "-gui-address=127.0.0.1:\(result.port)"]
+        task!.arguments = ["-no-browser", "-gui-address=127.0.0.1:\(port)"]
         task!.standardOutput = pipe
         readHandle.waitForDataInBackgroundAndNotify()
         task!.launch()
@@ -94,6 +90,12 @@ class SyncthingRunner: NSObject {
     func ensureRunning() -> (String?) {
         upgrade()
         
+        let result = portFinder.findPort()
+        // mop: ITS GO :O ZOMG!!111
+        if (result.err != nil) {
+            return "Could not find a port!"
+        }
+        self.port = result.port
         let err = run()
         return err
     }
