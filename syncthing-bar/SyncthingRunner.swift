@@ -146,8 +146,9 @@ class SyncthingRunner: NSObject {
                             return id != nil && path != nil
                         }).map({(object: AnyObject) -> (SyncthingFolder) in
                             let id = object["ID"] as? String
-                            let path = object["Path"] as? String
-                            
+                            let pathTemp = object["Path"] as? String
+                            let path = pathTemp?.stringByExpandingTildeInPath
+                                                        
                             return SyncthingFolder(id: id!, path: path!)
                         })
                         
