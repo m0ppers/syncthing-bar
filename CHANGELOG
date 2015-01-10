@@ -1,0 +1,10 @@
+0.0.2
+=====
+- Update logo to a vector logo (thx to Arminius@syncthing forum)
+- Keep port once it is determined (so restarting UI works as expected)
+- Use (and override any existing!) apikey for UI communication
+- Support for ~ based folders
+
+0.0.1
+=====
+- Initial release
