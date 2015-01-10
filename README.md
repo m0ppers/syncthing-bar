@@ -29,6 +29,10 @@ OS X 10.10 is required
 
 ![alt tag](https://m0ppers.github.io/syncthing-bar.gif)
 
+## Caveats
+
+Syncthingbar is intended for local usage only. It will hardcode host and port and apikey. If you want to access the UI from within your network use a standalone syncthing.
+
 ## Installation Package
 
 The latest release can be found on the [releases tab](https://github.com/m0ppers/syncthing-bar/releases)
