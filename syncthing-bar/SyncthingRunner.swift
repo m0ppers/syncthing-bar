@@ -25,6 +25,7 @@ class SyncthingRunner: NSObject {
     var repositoryCollectorTimer : NSTimer?
     var log : SyncthingLog
     var buf : NSString = NSString()
+    var apiKey: NSString?
 
     init(log: SyncthingLog) {
         self.log = log
@@ -57,7 +58,9 @@ class SyncthingRunner: NSObject {
         let port = self.port!
         let httpData : [String: String] = ["host": "127.0.0.1", "port": String(port)];
         
-        task!.arguments = ["-no-browser", "-gui-address=127.0.0.1:\(port)"]
+        self.apiKey = randomStringWithLength(32);
+        
+        task!.arguments = ["-no-browser", "-gui-address=127.0.0.1:\(port)", "-gui-apikey=\(self.apiKey!)"]
         task!.standardOutput = pipe
         readHandle.waitForDataInBackgroundAndNotify()
         task!.launch()
@@ -100,13 +103,35 @@ class SyncthingRunner: NSObject {
         return err
     }
     
+    // mop: copy paste :D http://stackoverflow.com/questions/26845307/generate-random-alphanumeric-string-in-swift looks good to me
+    func randomStringWithLength (len : Int) -> NSString {
+        let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        
+        var randomString : NSMutableString = NSMutableString(capacity: len)
+        
+        for (var i=0; i < len; i++){
+            var length = UInt32 (letters.length)
+            var rand = arc4random_uniform(length)
+            randomString.appendFormat("%C", letters.characterAtIndex(Int(rand)))
+        }
+        
+        return randomString
+    }
+    
+    func createRequest(path: NSString) -> NSMutableURLRequest {
+        var url = NSURL(string: "http://localhost:\(self.port!)\(path)")
+        var request = NSMutableURLRequest(URL: url!)
+        request.addValue(self.apiKey!, forHTTPHeaderField: "X-API-Key")
+        return request
+    }
+    
     func collectRepositories(timer: NSTimer) {
         // mop: jaja copy paste...must fix somewhen
         if let info = timer.userInfo as? Dictionary<String,String> {
             let host = info["host"]
             let port = info["port"]
-            let url = NSURL(string: "http://\(host!):\(port!)/rest/config")
-            let request = NSURLRequest(URL: url!)
+            
+            let request = createRequest("/rest/config")
             NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
                 if (error == nil) {
                     var jsonResult: NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
@@ -144,7 +169,7 @@ class SyncthingRunner: NSObject {
                 let host = info["host"]
                 let port = info["port"]
                 let url = NSURL(string: "http://\(host!):\(port!)/rest/version")
-                let request = NSURLRequest(URL: url!)
+                let request = createRequest("/rest/version")
                 
                 NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
                     if (error == nil) {
