@@ -24,7 +24,13 @@ class SyncthingBar: NSObject {
         //Add statusBarItem
         statusBarItem = statusBar.statusItemWithLength(-1)
         statusBarItem.menu = menu
-        statusBarItem.image = NSImage(named: "syncthing-bar.png")
+        
+        var size = NSSize(width: 18, height: 18)
+        var icon = NSImage(named: "syncthing-bar")
+        // mop: that is the preferred way but the image is currently not drawn as it has to be and i am not an artist :(
+        //icon?.setTemplate(true)
+        icon?.size = size
+        statusBarItem.image = icon
         
         menu.autoenablesItems = false
         

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F11BC9B11A3E20CA00360C2E /* syncthing in Resources */ = {isa = PBXBuildFile; fileRef = F11BC9B01A3E20CA00360C2E /* syncthing */; };
 		F11BC9B31A3E45E100360C2E /* SyncthingFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11BC9B21A3E45E100360C2E /* SyncthingFolder.swift */; };
+		F1A2BD431A6178620014473E /* syncthing-bar.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F1A2BD421A6178620014473E /* syncthing-bar.pdf */; };
 		F1A4E42D1A4587C300602986 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1A4E42B1A4587C300602986 /* Main.storyboard */; };
 		F1B099071A3C40AD00B79D31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B099061A3C40AD00B79D31 /* AppDelegate.swift */; };
 		F1B0990B1A3C40AD00B79D31 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1B0990A1A3C40AD00B79D31 /* Images.xcassets */; };
@@ -18,7 +19,6 @@
 		F1B0992C1A3C77FC00B79D31 /* PortFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B0992B1A3C77FC00B79D31 /* PortFinder.swift */; };
 		F1C594E51A3ED8830048CF9F /* SyncthingLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C594E41A3ED8830048CF9F /* SyncthingLog.swift */; };
 		F1EE75FA1A3D76B70028E6DD /* SyncthingBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EE75F91A3D76B70028E6DD /* SyncthingBar.swift */; };
-		F1F6D6391A41E5A100E972D0 /* syncthing-bar.png in Resources */ = {isa = PBXBuildFile; fileRef = F1F6D6381A41E5A100E972D0 /* syncthing-bar.png */; };
 		F1F8A6381A4016180049AFC1 /* LogWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1F8A6371A4016180049AFC1 /* LogWindow.xib */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +35,7 @@
 /* Begin PBXFileReference section */
 		F11BC9B01A3E20CA00360C2E /* syncthing */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = syncthing; sourceTree = "<group>"; };
 		F11BC9B21A3E45E100360C2E /* SyncthingFolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncthingFolder.swift; sourceTree = "<group>"; };
+		F1A2BD421A6178620014473E /* syncthing-bar.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "syncthing-bar.pdf"; sourceTree = "<group>"; };
 		F1A4E42C1A4587C300602986 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "syncthing-bar/Base.lproj/Main.storyboard"; sourceTree = "<group>"; };
 		F1B099011A3C40AD00B79D31 /* syncthing-bar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "syncthing-bar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1B099051A3C40AD00B79D31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -48,7 +49,6 @@
 		F1B0992B1A3C77FC00B79D31 /* PortFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortFinder.swift; sourceTree = "<group>"; };
 		F1C594E41A3ED8830048CF9F /* SyncthingLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncthingLog.swift; sourceTree = "<group>"; };
 		F1EE75F91A3D76B70028E6DD /* SyncthingBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncthingBar.swift; sourceTree = "<group>"; };
-		F1F6D6381A41E5A100E972D0 /* syncthing-bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "syncthing-bar.png"; sourceTree = "<group>"; };
 		F1F8A6371A4016180049AFC1 /* LogWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogWindow.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,7 +81,7 @@
 		F1B098F81A3C40AD00B79D31 = {
 			isa = PBXGroup;
 			children = (
-				F1F6D6371A41E58400E972D0 /* images */,
+				F1F6D6371A41E58400E972D0 /* Resources */,
 				F11BC9AF1A3E202700360C2E /* binary */,
 				F1B099031A3C40AD00B79D31 /* syncthing-bar */,
 				F1B099161A3C40AE00B79D31 /* syncthing-barTests */,
@@ -141,12 +141,12 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		F1F6D6371A41E58400E972D0 /* images */ = {
+		F1F6D6371A41E58400E972D0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				F1F6D6381A41E5A100E972D0 /* syncthing-bar.png */,
+				F1A2BD421A6178620014473E /* syncthing-bar.pdf */,
 			);
-			name = images;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,8 +232,8 @@
 				F11BC9B11A3E20CA00360C2E /* syncthing in Resources */,
 				F1A4E42D1A4587C300602986 /* Main.storyboard in Resources */,
 				F1B0990B1A3C40AD00B79D31 /* Images.xcassets in Resources */,
-				F1F6D6391A41E5A100E972D0 /* syncthing-bar.png in Resources */,
 				F1F8A6381A4016180049AFC1 /* LogWindow.xib in Resources */,
+				F1A2BD431A6178620014473E /* syncthing-bar.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
