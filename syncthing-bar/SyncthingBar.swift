@@ -116,5 +116,6 @@ class SyncthingBar: NSObject {
         // seems wrong to me but works (i want to view current log output :S)
         controller = LogWindowController(log: log)
         controller?.showWindow(self)
+        controller?.window?.makeKeyAndOrderFront(self)
     }
 }
