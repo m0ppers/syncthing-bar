@@ -68,7 +68,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func tooManyErrors(sender : AnyObject) {
         let alert = NSAlert()
         alert.addButtonWithTitle("Ok :(")
-        alert.messageText = "Syncthing could not rum. There were too many errors. Check log, and restart :("
+        alert.messageText = "Syncthing could not run. There were too many errors. Check log, and restart :("
         alert.alertStyle = NSAlertStyle.WarningAlertStyle
         
         let response = alert.runModal()
