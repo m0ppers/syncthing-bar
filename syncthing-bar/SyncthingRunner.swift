@@ -37,14 +37,6 @@ class SyncthingRunner: NSObject {
         notificationCenter.addObserver(self, selector: "receivedOut:", name: NSFileHandleDataAvailableNotification, object: nil)
     }
     
-    func upgrade() {
-        var upgradeTask = NSTask()
-        upgradeTask.launchPath = path;
-        upgradeTask.arguments = ["-upgrade"]
-        upgradeTask.launch()
-        upgradeTask.waitUntilExit()
-    }
-    
     func run() -> (String?) {
         var pipe : NSPipe = NSPipe()
         let readHandle = pipe.fileHandleForReading
@@ -91,8 +83,6 @@ class SyncthingRunner: NSObject {
     }
     
     func ensureRunning() -> (String?) {
-        upgrade()
-        
         let result = portFinder.findPort()
         // mop: ITS GO :O ZOMG!!111
         if (result.err != nil) {
