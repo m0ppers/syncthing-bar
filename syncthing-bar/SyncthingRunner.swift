@@ -123,6 +123,20 @@ class SyncthingRunner: NSObject {
             
             let request = createRequest("/rest/config")
             NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
+                if (error != nil) {
+                    println("Got error collecting repositories \(error)")
+                    return;
+                }
+                let httpResponse = response as? NSHTTPURLResponse;
+                if httpResponse == nil {
+                    println("Unexpected response");
+                    return;
+                }
+                
+                if httpResponse!.statusCode != 200 {
+                    println("Got non 200 HTTP Response \(httpResponse!.statusCode)");
+                    return;
+                }
                 if (error == nil) {
                     var jsonResult: NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as! NSDictionary
                     
