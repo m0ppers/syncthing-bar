@@ -102,12 +102,12 @@ class SyncthingBar: NSObject {
     
     func openUIAction(sender: AnyObject) {
         if (url != nil) {
-            NSWorkspace.sharedWorkspace().openURL(NSURL(string: url!)!)
+            NSWorkspace.sharedWorkspace().openURL(NSURL(string: url! as String)!)
         }
     }
     
     func openFolderAction(sender: AnyObject) {
-        let folder = (sender as NSMenuItem).representedObject as SyncthingFolder
+        let folder = (sender as! NSMenuItem).representedObject as! SyncthingFolder
         NSWorkspace.sharedWorkspace().openURL(NSURL(string: "file://\(folder.path)")!)
     }
     

@@ -42,8 +42,8 @@ class SyncthingRunner: NSObject {
         let readHandle = pipe.fileHandleForReading
         
         task = NSTask()
-        task!.launchPath = path
-        var environment = NSProcessInfo.processInfo().environment as [String: String]
+        task!.launchPath = path as String
+        var environment = NSProcessInfo.processInfo().environment as! [String: String]
         environment["STNORESTART"] =  "1"
         task!.environment = environment
 
@@ -65,7 +65,7 @@ class SyncthingRunner: NSObject {
     
     func receivedOut(notif : NSNotification) {
         // Unpack the FileHandle from the notification
-        let fh:NSFileHandle = notif.object as NSFileHandle
+        let fh:NSFileHandle = notif.object as! NSFileHandle
         // Get the data from the FileHandle
         let data = fh.availableData
         // Only deal with the data if it actually exists
@@ -73,7 +73,7 @@ class SyncthingRunner: NSObject {
             // Since we just got the notification from fh, we must tell it to notify us again when it gets more data
             fh.waitForDataInBackgroundAndNotify()
             // Convert the data into a string
-            let string = buf + NSString(data: data, encoding: NSUTF8StringEncoding)!
+            let string = (buf as String) + (NSString(data: data, encoding: NSUTF8StringEncoding)! as String)
             var lines = string.componentsSeparatedByString("\n")
             buf = lines.removeLast()
             for line in lines {
@@ -111,7 +111,7 @@ class SyncthingRunner: NSObject {
     func createRequest(path: NSString) -> NSMutableURLRequest {
         var url = NSURL(string: "http://localhost:\(self.port!)\(path)")
         var request = NSMutableURLRequest(URL: url!)
-        request.addValue(self.apiKey!, forHTTPHeaderField: "X-API-Key")
+        request.addValue(self.apiKey! as String, forHTTPHeaderField: "X-API-Key")
         return request
     }
     
@@ -124,7 +124,7 @@ class SyncthingRunner: NSObject {
             let request = createRequest("/rest/config")
             NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
                 if (error == nil) {
-                    var jsonResult: NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
+                    var jsonResult: NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as! NSDictionary
                     
                     // mop: WTF am i typing :S
                     let folders = jsonResult["Folders"] as? Array<AnyObject>
@@ -178,7 +178,7 @@ class SyncthingRunner: NSObject {
     }
     
     func taskStopped(sender: AnyObject) {
-        let task = sender.object as NSTask
+        let task = sender.object as! NSTask
         if (task != self.task) {
             return
         }

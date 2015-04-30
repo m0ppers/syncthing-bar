@@ -76,8 +76,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func httpChanged(notification: NSNotification) {
         if let info = notification.userInfo {
-            var host = notification.userInfo!["host"] as NSString
-            var port = notification.userInfo!["port"] as NSString
+            var host = notification.userInfo!["host"] as! NSString
+            var port = notification.userInfo!["port"] as! NSString
             
             syncthingBar!.enableUIOpener("http://\(host):\(port)")
         } else {
