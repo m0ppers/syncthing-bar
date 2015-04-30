@@ -26,6 +26,7 @@ class SyncthingRunner: NSObject {
     var log : SyncthingLog
     var buf : NSString = NSString()
     var apiKey: NSString?
+    var version: [Int]?
 
     init(log: SyncthingLog) {
         self.log = log
@@ -35,6 +36,34 @@ class SyncthingRunner: NSObject {
     
         notificationCenter.addObserver(self, selector: "taskStopped:", name: NSTaskDidTerminateNotification, object: task)
         notificationCenter.addObserver(self, selector: "receivedOut:", name: NSFileHandleDataAvailableNotification, object: nil)
+    }
+    
+    func registerVersion() -> Bool {
+        var pipe : NSPipe = NSPipe()
+        var versionTask = NSTask()
+        versionTask.launchPath = path as String
+        versionTask.arguments = ["--version"]
+        versionTask.standardOutput = pipe
+        versionTask.launch()
+        versionTask.waitUntilExit()
+        
+        let versionOut = pipe.fileHandleForReading.readDataToEndOfFile()
+        let versionString = NSString(data: versionOut, encoding: NSUTF8StringEncoding)
+        
+        var regex = NSRegularExpression(pattern: "^syncthing v(\\d+)\\.(\\d+)\\.(\\d+)",
+            options: nil, error: nil)
+        var results = regex!.matchesInString(versionString! as String, options: nil, range: NSMakeRange(0, versionString!.length))
+        if results.count == 1 {
+            let major = versionString?.substringWithRange(results[0].rangeAtIndex(1)).toInt() as Int!
+            let minor = versionString?.substringWithRange(results[0].rangeAtIndex(2)).toInt() as Int!
+            let patch = versionString?.substringWithRange(results[0].rangeAtIndex(3)).toInt() as Int!
+            
+            version = [ major, minor, patch ]
+            println("Syncthing version \(version![0]) \(version![1]) \(version![2])")
+            return true
+        } else {
+            return false
+        }
     }
     
     func run() -> (String?) {
@@ -83,6 +112,9 @@ class SyncthingRunner: NSObject {
     }
     
     func ensureRunning() -> (String?) {
+        if !registerVersion() {
+            return "Could not determine syncthing version"
+        }
         let result = portFinder.findPort()
         // mop: ITS GO :O ZOMG!!111
         if (result.err != nil) {
@@ -121,7 +153,21 @@ class SyncthingRunner: NSObject {
             let host = info["host"]
             let port = info["port"]
             
-            let request = createRequest("/rest/config")
+            var request: NSMutableURLRequest
+            var idElement: NSString
+            var pathElement: NSString
+            var foldersElement: NSString
+            if version![0] == 0 && version![1] == 10 {
+                request = createRequest("/rest/config")
+                idElement = "Id"
+                pathElement = "Path"
+                foldersElement = "Folders"
+            } else {
+                request = createRequest("/rest/system/config")
+                idElement = "id"
+                pathElement = "path"
+                foldersElement = "folders"
+            }
             NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
                 if (error != nil) {
                     println("Got error collecting repositories \(error)")
@@ -141,16 +187,16 @@ class SyncthingRunner: NSObject {
                     var jsonResult: NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as! NSDictionary
                     
                     // mop: WTF am i typing :S
-                    let folders = jsonResult["Folders"] as? Array<AnyObject>
+                    let folders = jsonResult[foldersElement] as? Array<AnyObject>
                     if folders != nil {
                         let folderStructArr = folders!.filter({(object: AnyObject) -> (Bool) in
-                            let id = object["ID"] as? String
-                            let path = object["Path"] as? String
+                            let id = object[idElement] as? String
+                            let path = object[pathElement] as? String
                             
                             return id != nil && path != nil
                         }).map({(object: AnyObject) -> (SyncthingFolder) in
-                            let id = object["ID"] as? String
-                            let pathTemp = object["Path"] as? String
+                            let id = object[idElement] as? String
+                            let pathTemp = object[pathElement] as? String
                             let path = pathTemp?.stringByExpandingTildeInPath
                                                         
                             return SyncthingFolder(id: id!, path: path!)
@@ -221,7 +267,7 @@ class SyncthingRunner: NSObject {
     }
     
     func stopTimers() {
-        if (portOpenTimer!.valid) {
+        if (portOpenTimer != nil && portOpenTimer!.valid) {
             portOpenTimer!.invalidate()
         }
         
