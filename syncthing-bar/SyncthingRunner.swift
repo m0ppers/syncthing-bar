@@ -159,7 +159,7 @@ class SyncthingRunner: NSObject {
             var foldersElement: NSString
             if version![0] == 0 && version![1] == 10 {
                 request = createRequest("/rest/config")
-                idElement = "Id"
+                idElement = "ID"
                 pathElement = "Path"
                 foldersElement = "Folders"
             } else {
