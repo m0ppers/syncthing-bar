@@ -10,16 +10,16 @@
 		F11BC9B11A3E20CA00360C2E /* syncthing in Resources */ = {isa = PBXBuildFile; fileRef = F11BC9B01A3E20CA00360C2E /* syncthing */; };
 		F11BC9B31A3E45E100360C2E /* SyncthingFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11BC9B21A3E45E100360C2E /* SyncthingFolder.swift */; };
 		F1A2BD431A6178620014473E /* syncthing-bar.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F1A2BD421A6178620014473E /* syncthing-bar.pdf */; };
-		F1A4E42D1A4587C300602986 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1A4E42B1A4587C300602986 /* Main.storyboard */; };
 		F1B099071A3C40AD00B79D31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B099061A3C40AD00B79D31 /* AppDelegate.swift */; };
 		F1B0990B1A3C40AD00B79D31 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1B0990A1A3C40AD00B79D31 /* Images.xcassets */; };
 		F1B0991A1A3C40AE00B79D31 /* syncthing_barTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B099191A3C40AE00B79D31 /* syncthing_barTests.swift */; };
 		F1B099281A3C4FA800B79D31 /* LogWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B099271A3C4FA700B79D31 /* LogWindowController.swift */; };
 		F1B0992A1A3C764400B79D31 /* SyncthingRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B099291A3C764400B79D31 /* SyncthingRunner.swift */; };
 		F1B0992C1A3C77FC00B79D31 /* PortFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B0992B1A3C77FC00B79D31 /* PortFinder.swift */; };
+		F1BEE1451B18529B001B5F8E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1A4E42B1A4587C300602986 /* Main.storyboard */; };
+		F1BEE1461B185310001B5F8E /* LogWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1F8A6371A4016180049AFC1 /* LogWindow.xib */; };
 		F1C594E51A3ED8830048CF9F /* SyncthingLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C594E41A3ED8830048CF9F /* SyncthingLog.swift */; };
 		F1EE75FA1A3D76B70028E6DD /* SyncthingBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EE75F91A3D76B70028E6DD /* SyncthingBar.swift */; };
-		F1F8A6381A4016180049AFC1 /* LogWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1F8A6371A4016180049AFC1 /* LogWindow.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -230,9 +230,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F11BC9B11A3E20CA00360C2E /* syncthing in Resources */,
-				F1A4E42D1A4587C300602986 /* Main.storyboard in Resources */,
+				F1BEE1451B18529B001B5F8E /* Main.storyboard in Resources */,
+				F1BEE1461B185310001B5F8E /* LogWindow.xib in Resources */,
 				F1B0990B1A3C40AD00B79D31 /* Images.xcassets in Resources */,
-				F1F8A6381A4016180049AFC1 /* LogWindow.xib in Resources */,
 				F1A2BD431A6178620014473E /* syncthing-bar.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
