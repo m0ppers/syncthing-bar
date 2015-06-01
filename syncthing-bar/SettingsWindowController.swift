@@ -24,7 +24,6 @@ class SettingsWindowController: NSWindowController {
     }
     
     init(settings: SyncthingSettings) {
-        //print("CALLING SETTINGS INIT !!!\n")
         
         self.settings = settings //SyncthingSettings(bw_icon: bw_icon, invert_icon: invert_icon, port: port, confirm_exit: confirm_exit)
         
@@ -44,7 +43,6 @@ class SettingsWindowController: NSWindowController {
     }
     
     func applySettings() {
-        //print("APPLYING SETTINGS")
         
         settings.applySettings(self)
     }
@@ -61,15 +59,11 @@ class SettingsWindowController: NSWindowController {
             invert_icon_check.enabled = true
         }*/
         
-        //print("BW_ICON SET \n")
-        
         postSettings()
     }
     
     @IBAction func invert_icon_checked(sender: NSButton) {
         self.settings.invert_icon = (sender.state == NSOnState)
-        
-        //print("INVERT_ICON SET \n")
         
         postSettings()
     }
@@ -77,15 +71,11 @@ class SettingsWindowController: NSWindowController {
     @IBAction func port_changed(sender: NSTextField) {
         self.settings.port = sender.stringValue
         
-        //print("PORT SET \n")
-        
         postSettings()
     }
     
     @IBAction func confirm_exit_checked(sender: NSButton) {
         self.settings.confirm_exit = (sender.state == NSOnState)
-        
-        //print("PORT SET \n")
         
         postSettings()
     }

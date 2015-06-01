@@ -141,7 +141,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 return
             }
             
-            self.syncthingBar!.setSettings(settings_ntfc)
+            self.syncthingBar!.updateSettings(settings_ntfc)
             
         }
     }

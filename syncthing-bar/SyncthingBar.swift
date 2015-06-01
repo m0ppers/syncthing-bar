@@ -50,6 +50,7 @@ class SyncthingBar: NSObject {
         openLogItem.enabled = true
         menu.addItem(openLogItem)
         
+        // this will automagically check, if there are already settings stored and load them ...
         settings = SyncthingSettings()
         
         var openSettingsItem : NSMenuItem = NSMenuItem()
@@ -69,6 +70,8 @@ class SyncthingBar: NSObject {
         openUIItem.target = self
         openLogItem.target = self
         openSettingsItem.target = self
+        
+        self.updateSettings(self.settings!)
     }
     
     func enableUIOpener(uiUrl: NSString) {
@@ -133,9 +136,6 @@ class SyncthingBar: NSObject {
     
     func openSettingsAction(sender: AnyObject) {
         // ctp: settins window only used for syncthing-bar, not syncthing itself, although we could also configure port here ...
-        //print("INIT BW ICON: " + String(stringInterpolationSegment: self.bw_icon) + "\n")
-        //print("INIT INVERT ICON: " + String(stringInterpolationSegment: self.invert_icon) + "\n")
-        //print("INIT PORT: " + self.port + "\n")
         
         setter = SettingsWindowController(settings: self.settings!)
         setter?.showWindow(self)
@@ -143,14 +143,12 @@ class SyncthingBar: NSObject {
         setter?.window?.makeKeyAndOrderFront(self)
     }
     
-    func setSettings(settings: SyncthingSettings) {
+    func updateSettings(settings: SyncthingSettings) {
         // ctp: somewhat redundany to storing this in the settings controller already?
         // maybe we shouldn't create the settings window over and over ?
         
         // TODO: we are not storing these settings anywhere useful, yet
         // TODO: maybe create an app-settings-dir in the appropriate ~/Library location and write the settings into there?
-        
-        //print("SETTING NEW VALUES\n")
         
         self.settings = settings
         
@@ -177,9 +175,7 @@ class SyncthingBar: NSObject {
             statusBarItem.image = icon
         }
         
-        //print("BW ICON: " + String(stringInterpolationSegment: self.bw_icon) + "\n")
-        //print("INVERT ICON: " + String(stringInterpolationSegment: self.invert_icon) + "\n")
-        //print("PORT: " + self.port + "\n")
+        self.settings?.saveSettings()
 
     }
  
