@@ -11,7 +11,7 @@ import AppKit
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-    //lazy var settingsWindowController = SettingsWindowController(windowNibName: "Settings")
+    //var settingsWindowController = SettingsWindowController() //windowNibName: "Settings")
     var runner : SyncthingRunner?
     var syncthingBar : SyncthingBar?
     var log : SyncthingLog = SyncthingLog()
@@ -36,6 +36,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "tooManyErrors:", name: TooManyErrorsNotification, object: runner)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "foldersDetermined:", name: FoldersDetermined, object: runner)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "httpChanged:", name: HttpChanged, object: runner)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "settingsSet:", name: SettingsSet, object: syncthingBar?.setter)
     }
     
     func stop() {
@@ -53,16 +55,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func quitAction(sender : AnyObject) {
-        let alert = NSAlert()
-        alert.addButtonWithTitle("Yes")
-        alert.addButtonWithTitle("Cancel")
-        alert.messageText = "Are you sure you want to quit?"
-        alert.alertStyle = NSAlertStyle.WarningAlertStyle
+        if (syncthingBar!.settings!.confirm_exit) {
+            let alert = NSAlert()
+            alert.addButtonWithTitle("Yes")
+            alert.addButtonWithTitle("Cancel")
+            alert.messageText = "Are you sure you want to quit?"
+            
+            // FIX: THIS DOESN'T WORK ...
+            //var remember_btn: NSButton = alert.addButtonWithTitle("Remember my decision.")
+            //remember_btn.setButtonType(NSButtonType.OnOffButton)
+            
+            alert.alertStyle = NSAlertStyle.WarningAlertStyle
         
-        let response = alert.runModal()
-        if (response == NSAlertFirstButtonReturn) {
-            self.quit()
+            let response = alert.runModal()
+            if (response != NSAlertFirstButtonReturn) {
+                return
+            }
         }
+        self.quit()
     }
     
     func tooManyErrors(sender : AnyObject) {
@@ -74,10 +84,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let response = alert.runModal()
     }
     
+    func genericError(errorMessage: String) {
+        let alert = NSAlert()
+        alert.addButtonWithTitle("Ok :(")
+        alert.messageText = errorMessage
+        alert.alertStyle = NSAlertStyle.WarningAlertStyle
+        
+        let response = alert.runModal()
+    }
+    
     func httpChanged(notification: NSNotification) {
         if let info = notification.userInfo {
             var host = notification.userInfo!["host"] as! NSString
             var port = notification.userInfo!["port"] as! NSString
+            
+            self.syncthingBar!.settings!.port = port as String
             
             syncthingBar!.enableUIOpener("http://\(host):\(port)")
         } else {
@@ -88,6 +109,40 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func foldersDetermined(notification: NSNotification) {
         if let folders = notification.userInfo!["folders"] as? Array<SyncthingFolder> {
             syncthingBar!.setFolders(folders)
+        }
+    }
+    
+    func settingsSet(notification: NSNotification) {
+        // ctp: maybe we should have a Settings class ...
+        
+        var settings = self.syncthingBar?.settings
+        
+        if let settings_ntfc = notification.userInfo!["settings"] as? SyncthingSettings {
+            
+            var valid_port : Bool = true
+            var port_ntfc : String = settings_ntfc.port
+            
+            if ((count(port_ntfc) < 3) || (count(port_ntfc) > 5)) {
+                valid_port = false
+            }
+            
+            var portFromString = port_ntfc.toInt()
+            if ((portFromString) != nil) {
+                if ((portFromString < 1000) || (portFromString > 65535)) {
+                    valid_port = false
+                }
+            }
+            else {
+                valid_port = false
+            }
+            
+            if (!valid_port) {
+                self.genericError("You entered an invalid port number.")
+                return
+            }
+            
+            self.syncthingBar!.setSettings(settings_ntfc)
+            
         }
     }
     

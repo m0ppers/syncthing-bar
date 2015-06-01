@@ -17,6 +17,8 @@ class SyncthingBar: NSObject {
     var openUIItem: NSMenuItem
     var url: NSString?
     var controller: LogWindowController?
+    var settings: SyncthingSettings?
+    var setter: SettingsWindowController?
     var log : SyncthingLog
     
     init(log : SyncthingLog) {
@@ -48,6 +50,14 @@ class SyncthingBar: NSObject {
         openLogItem.enabled = true
         menu.addItem(openLogItem)
         
+        settings = SyncthingSettings()
+        
+        var openSettingsItem : NSMenuItem = NSMenuItem()
+        openSettingsItem.title = "Settings"
+        openSettingsItem.action = Selector("openSettingsAction:")
+        openSettingsItem.enabled = true
+        menu.addItem(openSettingsItem)
+        
         var quitItem : NSMenuItem = NSMenuItem()
         quitItem.title = "Quit"
         quitItem.action = Selector("quitAction:")
@@ -58,6 +68,7 @@ class SyncthingBar: NSObject {
         // mop: todo: move the remaining actions as well
         openUIItem.target = self
         openLogItem.target = self
+        openSettingsItem.target = self
     }
     
     func enableUIOpener(uiUrl: NSString) {
@@ -116,6 +127,60 @@ class SyncthingBar: NSObject {
         // seems wrong to me but works (i want to view current log output :S)
         controller = LogWindowController(log: log)
         controller?.showWindow(self)
+        //controller?.window?.makeMainWindow()
         controller?.window?.makeKeyAndOrderFront(self)
     }
+    
+    func openSettingsAction(sender: AnyObject) {
+        // ctp: settins window only used for syncthing-bar, not syncthing itself, although we could also configure port here ...
+        //print("INIT BW ICON: " + String(stringInterpolationSegment: self.bw_icon) + "\n")
+        //print("INIT INVERT ICON: " + String(stringInterpolationSegment: self.invert_icon) + "\n")
+        //print("INIT PORT: " + self.port + "\n")
+        
+        setter = SettingsWindowController(settings: self.settings!)
+        setter?.showWindow(self)
+        //setter?.window?.makeMainWindow()
+        setter?.window?.makeKeyAndOrderFront(self)
+    }
+    
+    func setSettings(settings: SyncthingSettings) {
+        // ctp: somewhat redundany to storing this in the settings controller already?
+        // maybe we shouldn't create the settings window over and over ?
+        
+        // TODO: we are not storing these settings anywhere useful, yet
+        // TODO: maybe create an app-settings-dir in the appropriate ~/Library location and write the settings into there?
+        
+        //print("SETTING NEW VALUES\n")
+        
+        self.settings = settings
+        
+        var size = NSSize(width: 18, height: 18)
+        
+        if (self.settings!.bw_icon) {
+            if (self.settings!.invert_icon) {
+                var icon = NSImage(named: "syncthing-bar-invert")
+                icon?.setTemplate(true)
+                icon?.size = size
+                statusBarItem.image = icon
+            }
+            else {
+                var icon = NSImage(named: "syncthing-bar")
+                icon?.setTemplate(true)
+                icon?.size = size
+                statusBarItem.image = icon
+            }
+        }
+        else {
+            var icon = NSImage(named: "AppIcon")
+            //icon?.setTemplate(true)
+            icon?.size = size
+            statusBarItem.image = icon
+        }
+        
+        //print("BW ICON: " + String(stringInterpolationSegment: self.bw_icon) + "\n")
+        //print("INVERT ICON: " + String(stringInterpolationSegment: self.invert_icon) + "\n")
+        //print("PORT: " + self.port + "\n")
+
+    }
+ 
 }

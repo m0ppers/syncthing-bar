@@ -11,6 +11,7 @@ import Foundation
 let TooManyErrorsNotification = "koeln.mop.too-many-errors"
 let HttpChanged = "koeln.mop.http-changed"
 let FoldersDetermined = "koeln.mop.folders-determined"
+let SettingsSet = "koeln.mop.settings-set"
 
 class SyncthingRunner: NSObject {
     var portFinder : PortFinder = PortFinder(startPort: 8084)
