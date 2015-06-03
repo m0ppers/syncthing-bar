@@ -10,6 +10,7 @@
                 <outlet property="bw_icon_check" destination="O7r-Nw-p5I" id="d4X-Vw-j0w"/>
                 <outlet property="confirm_exit_check" destination="pf2-cZ-4IC" id="Jar-uR-i5J"/>
                 <outlet property="invert_icon_check" destination="0zi-6z-2oL" id="qWU-bu-tKD"/>
+                <outlet property="monitor_apps" destination="PN5-r4-f6J" id="DrC-YB-RUV"/>
                 <outlet property="port_field" destination="xQS-9g-fs7" id="3mf-iB-tiA"/>
             </connections>
         </customObject>
@@ -79,7 +80,7 @@
                         <font key="titleFont" metaFont="system"/>
                     </box>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pf2-cZ-4IC">
-                        <rect key="frame" x="287" y="136" width="141" height="18"/>
+                        <rect key="frame" x="257" y="136" width="141" height="18"/>
                         <buttonCell key="cell" type="check" title="Confirm before Exit" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="CgB-Of-VLe">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
@@ -88,6 +89,25 @@
                             <action selector="confirm_exit_checked:" target="-2" id="fTz-Fs-T3u"/>
                         </connections>
                     </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S0r-sS-FdX">
+                        <rect key="frame" x="257" y="116" width="38" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Stop:" id="RpM-1M-wo1">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PN5-r4-f6J">
+                        <rect key="frame" x="301" y="87" width="159" height="47"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="iPhoto; iMovie Lightroom" drawsBackground="YES" id="ltf-No-wAB">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <action selector="monitor_apps_changed:" target="-2" id="BDB-mt-WtZ"/>
+                        </connections>
+                    </textField>
                 </subviews>
             </view>
             <point key="canvasLocation" x="466" y="378"/>

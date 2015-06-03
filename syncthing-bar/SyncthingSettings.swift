@@ -23,25 +23,31 @@ class SyncthingSettings {
     var confirm_exit_key: String = "ConfirmExit"
     var confirm_exit: Bool = true
     
+    var monitor_apps_key: String = "MonitorApps"
+    var monitor_apps = "iPhoto; iMovie\nLightroom"
+    
     init() {
         self.bw_icon_key = "BlackWhiteIcon"
         self.invert_icon_key = "InvertIcon"
         self.port_key = "PortNumber"
         self.confirm_exit_key = "ConfirmExit"
+        self.monitor_apps_key = "MonitorApps"
         
         self.bw_icon = true
         self.invert_icon = false
         self.port = "8084"
         self.confirm_exit = true
+        self.monitor_apps = "iPhoto; iMovie\nLightroom"
         
         self.loadSettings()
     }
     
-    init(bw_icon: Bool, invert_icon: Bool, port: String, confirm_exit: Bool) {
+    init(bw_icon: Bool, invert_icon: Bool, port: String, confirm_exit: Bool, monitor_apps: String) {
         self.bw_icon = bw_icon
         self.invert_icon = invert_icon
         self.port = port
         self.confirm_exit = confirm_exit
+        self.monitor_apps = monitor_apps
         
         self.saveSettings()
     }
@@ -58,11 +64,15 @@ class SyncthingSettings {
         }
         
         if let port_string = defaults.valueForKey(self.port_key) as? String {
-            port = port_string
+            self.port = port_string
         }
         
         if let confirm_exit = defaults.valueForKey(self.confirm_exit_key) as? Bool {
             self.confirm_exit = confirm_exit
+        }
+        
+        if let monitor_apps_string = defaults.valueForKey(self.monitor_apps_key) as? String {
+            self.monitor_apps = monitor_apps_string
         }
     }
     
@@ -75,6 +85,7 @@ class SyncthingSettings {
         defaults.setValue(self.invert_icon, forKey: self.invert_icon_key)
         defaults.setValue(self.port, forKey: self.port_key)
         defaults.setValue(self.confirm_exit, forKey: self.confirm_exit_key)
+        defaults.setValue(self.monitor_apps, forKey: self.monitor_apps_key)
         
         defaults.synchronize()
     }
@@ -99,5 +110,7 @@ class SyncthingSettings {
         } else {
             wndCtrl.confirm_exit_check?.state = NSOffState
         }
+        
+        wndCtrl.monitor_apps?.stringValue = self.monitor_apps as String
     }
 }
