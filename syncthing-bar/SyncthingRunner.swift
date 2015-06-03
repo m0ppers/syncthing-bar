@@ -12,6 +12,7 @@ let TooManyErrorsNotification = "koeln.mop.too-many-errors"
 let HttpChanged = "koeln.mop.http-changed"
 let FoldersDetermined = "koeln.mop.folders-determined"
 let SettingsSet = "koeln.mop.settings-set"
+let StartStop = "koeln.mop.start-stop"
 
 class SyncthingRunner: NSObject {
     var portFinder : PortFinder = PortFinder(startPort: 8084)
@@ -28,8 +29,10 @@ class SyncthingRunner: NSObject {
     var buf : NSString = NSString()
     var apiKey: NSString?
     var version: [Int]?
+    var paused: Bool
 
     init(log: SyncthingLog) {
+        self.paused = false
         self.log = log
         path = NSBundle.mainBundle().pathForResource("syncthing/syncthing", ofType: "")!
         
@@ -247,6 +250,11 @@ class SyncthingRunner: NSObject {
         var httpData = []
         self.notificationCenter.postNotificationName(HttpChanged, object: self)
         
+        if (self.paused) {
+            // ctp: DO NOT attempt restart when paused ...
+            return
+        }
+        
         stopTimers()
         
         var current = NSDate()
@@ -277,6 +285,24 @@ class SyncthingRunner: NSObject {
                 repositoryCollectorTimer!.invalidate()
             }
         }
+    }
+    
+    func pause() {
+        if (self.paused) {
+            return
+        }
+        
+        self.paused = true
+        self.stop()
+    }
+    
+    func play() {
+        if (!self.paused) {
+            return
+        }
+        
+        self.paused = false
+        self.run()
     }
     
     func stop() {

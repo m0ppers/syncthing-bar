@@ -15,6 +15,7 @@ class SyncthingBar: NSObject {
     var statusBarItem : NSStatusItem = NSStatusItem()
     var menu : NSMenu = NSMenu()
     var openUIItem: NSMenuItem
+    var startStopSyncthingItem: NSMenuItem
     var url: NSString?
     var controller: LogWindowController?
     var settings: SyncthingSettings?
@@ -42,6 +43,12 @@ class SyncthingBar: NSObject {
         openUIItem.enabled = false
         menu.addItem(openUIItem)
         
+        startStopSyncthingItem = NSMenuItem()
+        startStopSyncthingItem.title = "Stop Syncthing"
+        startStopSyncthingItem.action = Selector("startStopSyncthingAction:")
+        startStopSyncthingItem.enabled = false
+        menu.addItem(startStopSyncthingItem)
+        
         menu.addItem(NSMenuItem.separatorItem())
         
         var openLogItem : NSMenuItem = NSMenuItem()
@@ -68,6 +75,7 @@ class SyncthingBar: NSObject {
         super.init()
         // mop: todo: move the remaining actions as well
         openUIItem.target = self
+        startStopSyncthingItem.target = self
         openLogItem.target = self
         openSettingsItem.target = self
         
@@ -77,6 +85,7 @@ class SyncthingBar: NSObject {
     func enableUIOpener(uiUrl: NSString) {
         url = uiUrl
         openUIItem.enabled = true
+        startStopSyncthingItem.enabled = true
     }
     
     func disableUIOpener() {
@@ -92,7 +101,7 @@ class SyncthingBar: NSObject {
         }
         
         // mop: maybe findByTag instead of hardcoded number?
-        var startInsertIndex = 2
+        var startInsertIndex = 3
         var folderCount = 0
         for folder in folders {
             var folderItem : NSMenuItem = NSMenuItem()
@@ -117,6 +126,21 @@ class SyncthingBar: NSObject {
     func openUIAction(sender: AnyObject) {
         if (url != nil) {
             NSWorkspace.sharedWorkspace().openURL(NSURL(string: url! as String)!)
+        }
+    }
+    
+    func startStopSyncthingAction(sender: AnyObject) {
+        var notificationCenter: NSNotificationCenter = NSNotificationCenter.defaultCenter()
+        var title: String = (sender as! NSMenuItem).title
+        if title.rangeOfString("Stop") != nil {
+            (sender as! NSMenuItem).title = "Start Syncthing"
+            let startStopData = ["pause": true]
+            notificationCenter.postNotificationName(StartStop, object: self, userInfo: startStopData)
+        }
+        else {
+            (sender as! NSMenuItem).title = "Stop Syncthing"
+            let startStopData = ["pause": false]
+            notificationCenter.postNotificationName(StartStop, object: self, userInfo: startStopData)
         }
     }
     
