@@ -11,6 +11,7 @@
                 <outlet property="confirm_exit_check" destination="pf2-cZ-4IC" id="Jar-uR-i5J"/>
                 <outlet property="invert_icon_check" destination="0zi-6z-2oL" id="qWU-bu-tKD"/>
                 <outlet property="monitor_apps" destination="PN5-r4-f6J" id="DrC-YB-RUV"/>
+                <outlet property="monitoring_check" destination="aFe-DX-Hqt" id="hTE-qx-Zp5"/>
                 <outlet property="port_field" destination="xQS-9g-fs7" id="3mf-iB-tiA"/>
             </connections>
         </customObject>
@@ -19,10 +20,10 @@
         <window title="Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" texturedBackground="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="1024" y="876" width="480" height="170"/>
+            <rect key="contentRect" x="1024" y="876" width="480" height="200"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="5" width="480" height="170"/>
+                <rect key="frame" x="0.0" y="-1" width="480" height="200"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ob2-fJ-ak6">
@@ -35,7 +36,7 @@
                         </textFieldCell>
                     </textField>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O7r-Nw-p5I">
-                        <rect key="frame" x="21" y="138" width="218" height="14"/>
+                        <rect key="frame" x="18" y="142" width="218" height="14"/>
                         <buttonCell key="cell" type="check" title="Black &amp; White (transparent icon)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="mqq-PO-qg2">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
@@ -44,18 +45,8 @@
                             <action selector="bw_icon_checked:" target="-2" id="6LA-V0-cgh"/>
                         </connections>
                     </button>
-                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0zi-6z-2oL">
-                        <rect key="frame" x="33" y="115" width="128" height="14"/>
-                        <buttonCell key="cell" type="check" title="Use inverted icon" bezelStyle="regularSquare" imagePosition="left" inset="2" id="9cX-4U-uVE">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="invert_icon_checked:" target="-2" id="FrM-dw-fby"/>
-                        </connections>
-                    </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ssr-YH-4rb">
-                        <rect key="frame" x="21" y="87" width="34" height="17"/>
+                        <rect key="frame" x="21" y="92" width="34" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Port:" id="QND-KO-oQ8">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -63,7 +54,7 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xQS-9g-fs7">
-                        <rect key="frame" x="61" y="84" width="64" height="22"/>
+                        <rect key="frame" x="61" y="89" width="64" height="22"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="8084" bezelStyle="round" id="mV2-st-Pbi">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -80,7 +71,7 @@
                         <font key="titleFont" metaFont="system"/>
                     </box>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pf2-cZ-4IC">
-                        <rect key="frame" x="257" y="136" width="141" height="18"/>
+                        <rect key="frame" x="18" y="164" width="141" height="18"/>
                         <buttonCell key="cell" type="check" title="Confirm before Exit" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="CgB-Of-VLe">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
@@ -89,16 +80,36 @@
                             <action selector="confirm_exit_checked:" target="-2" id="fTz-Fs-T3u"/>
                         </connections>
                     </button>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S0r-sS-FdX">
-                        <rect key="frame" x="257" y="116" width="38" height="17"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Stop:" id="RpM-1M-wo1">
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0zi-6z-2oL">
+                        <rect key="frame" x="33" y="121" width="128" height="14"/>
+                        <buttonCell key="cell" type="check" title="Use inverted icon" bezelStyle="regularSquare" imagePosition="left" inset="2" id="9cX-4U-uVE">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="invert_icon_checked:" target="-2" id="FrM-dw-fby"/>
+                        </connections>
+                    </button>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aFe-DX-Hqt">
+                        <rect key="frame" x="269" y="164" width="160" height="18"/>
+                        <buttonCell key="cell" type="check" title="Pause on Applications" bezelStyle="regularSquare" imagePosition="left" inset="2" id="vjx-P7-lXj">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="monitoring_checked:" target="-2" id="5LT-iY-9pH"/>
+                        </connections>
+                    </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kk1-0x-5ko">
+                        <rect key="frame" x="287" y="87" width="154" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Requires System Monitoring" id="QNL-j9-oXI">
+                            <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PN5-r4-f6J">
-                        <rect key="frame" x="301" y="87" width="159" height="47"/>
+                        <rect key="frame" x="287" y="106" width="159" height="52"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="iPhoto; iMovie Lightroom" drawsBackground="YES" id="ltf-No-wAB">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -110,7 +121,7 @@
                     </textField>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="466" y="378"/>
+            <point key="canvasLocation" x="466" y="393"/>
         </window>
         <button verticalHuggingPriority="750" id="Vsu-Db-VOd">
             <rect key="frame" x="0.0" y="0.0" width="82" height="32"/>

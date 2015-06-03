@@ -13,6 +13,7 @@ class SettingsWindowController: NSWindowController {
     @IBOutlet var invert_icon_check: NSButton!
     @IBOutlet var port_field: NSTextField!
     @IBOutlet var confirm_exit_check: NSButton!
+    @IBOutlet var monitoring_check: NSButton!
     @IBOutlet var monitor_apps: NSTextField!
     
     var settings: SyncthingSettings = SyncthingSettings()
@@ -77,6 +78,12 @@ class SettingsWindowController: NSWindowController {
     
     @IBAction func confirm_exit_checked(sender: NSButton) {
         self.settings.confirm_exit = (sender.state == NSOnState)
+        
+        postSettings()
+    }
+    
+    @IBAction func monitoring_checked(sender: NSButton) {
+        self.settings.monitoring = (sender.state == NSOnState)
         
         postSettings()
     }
