@@ -42,7 +42,7 @@ class SyncthingSettings {
         self.port = "8084"
         self.confirm_exit = true
         self.monitoring = false
-        self.monitor_apps = "iPhoto; iMovie\nLightroom"
+        self.monitor_apps = "iPhoto; iMovie,\niTunes, Lightroom"
         
         self.loadSettings()
     }
