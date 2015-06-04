@@ -15,6 +15,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var runner : SyncthingRunner?
     var syncthingBar : SyncthingBar?
     var log : SyncthingLog = SyncthingLog()
+    var monitor : MonitorRunner?
     
     func applicationWillFinishLaunching(aNotification: NSNotification?) {
         NSApp.setActivationPolicy(NSApplicationActivationPolicy.Accessory)
@@ -37,8 +38,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "foldersDetermined:", name: FoldersDetermined, object: runner)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "httpChanged:", name: HttpChanged, object: runner)
         
+        self.monitor = MonitorRunner(monitor_apps: syncthingBar?.settings?.monitor_apps)
+        if self.syncthingBar!.settings!.monitoring {
+            self.monitor?.startMonitor()
+        }
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "settingsSet:", name: SettingsSet, object: syncthingBar?.setter)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "startStop:", name: StartStop, object: syncthingBar)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "startStop:", name: StartStop, object: monitor)
     }
     
     func stop() {
@@ -144,6 +151,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             
             self.syncthingBar!.updateSettings(settings_ntfc)
             
+        }
+        
+        //start stop app monitor from here ..?
+        self.monitor!.set_apps(self.syncthingBar!.settings?.monitor_apps)
+        
+        if self.syncthingBar!.settings!.monitoring {
+            self.monitor?.startMonitor()
+        } else {
+            self.monitor?.stopMonitor()
         }
     }
     
