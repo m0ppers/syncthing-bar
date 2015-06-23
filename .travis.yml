@@ -1,0 +1,8 @@
+language: objective-c
+
+before_install:
+  - brew update
+  - brew outdated xctool || brew upgrade xctool
+
+xcode_project: syncthing-bar.xcodeproj
+xcode_scheme: syncthing-bar
