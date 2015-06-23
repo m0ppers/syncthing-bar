@@ -10,7 +10,7 @@ import Cocoa
 
 let FolderTag = 1
 
-class SyncthingBar: NSObject {
+public class SyncthingBar: NSObject {
     var statusBar: NSStatusBar = NSStatusBar.systemStatusBar()
     var statusBarItem : NSStatusItem = NSStatusItem()
     var menu : NSMenu = NSMenu()
@@ -21,8 +21,9 @@ class SyncthingBar: NSObject {
     var settings: SyncthingSettings?
     var setter: SettingsWindowController?
     var log : SyncthingLog
+    public var workspace : NSWorkspace = NSWorkspace.sharedWorkspace()
     
-    init(log : SyncthingLog) {
+    public init(log : SyncthingLog) {
         self.log = log
         //Add statusBarItem
         statusBarItem = statusBar.statusItemWithLength(-1)
@@ -125,7 +126,7 @@ class SyncthingBar: NSObject {
     
     func openUIAction(sender: AnyObject) {
         if (url != nil) {
-            NSWorkspace.sharedWorkspace().openURL(NSURL(string: url! as String)!)
+            workspace.openURL(NSURL(string: url! as String)!)
         }
     }
     
@@ -144,9 +145,9 @@ class SyncthingBar: NSObject {
         }
     }
     
-    func openFolderAction(sender: AnyObject) {
+    public func openFolderAction(sender: AnyObject) {
         let folder = (sender as! NSMenuItem).representedObject as! SyncthingFolder
-        NSWorkspace.sharedWorkspace().openURL(NSURL(fileURLWithPath: folder.path as String)!)
+        workspace.openURL(NSURL(fileURLWithPath: folder.path as String)!)
     }
     
     func openLogAction(sender: AnyObject) {

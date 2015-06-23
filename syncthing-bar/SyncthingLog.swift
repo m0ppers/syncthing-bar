@@ -8,8 +8,11 @@
 
 import Foundation
 
-class SyncthingLog {
+public class SyncthingLog {
     var logBuffer : Array<String> = []
+    
+    public init() {
+    }
     
     func log(line: String) {
         logBuffer.append(line)

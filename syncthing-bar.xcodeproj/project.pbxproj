@@ -13,17 +13,17 @@
 		8310FB891B1F3DB500225E47 /* MonitorRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8310FB881B1F3DB500225E47 /* MonitorRunner.swift */; };
 		F11BC9B11A3E20CA00360C2E /* syncthing in Resources */ = {isa = PBXBuildFile; fileRef = F11BC9B01A3E20CA00360C2E /* syncthing */; };
 		F11BC9B31A3E45E100360C2E /* SyncthingFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11BC9B21A3E45E100360C2E /* SyncthingFolder.swift */; };
-		F1A2BD431A6178620014473E /* syncthing-bar.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F1A2BD421A6178620014473E /* syncthing-bar.pdf */; };
+		F14B62FC1B39E2B90022C08F /* syncthing-bar.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F1A2BD421A6178620014473E /* syncthing-bar.pdf */; };
+		F14B62FD1B39E2F60022C08F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1A4E42B1A4587C300602986 /* Main.storyboard */; };
+		F1B0205F1B39D057006BC805 /* SyncthingBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B0205E1B39D057006BC805 /* SyncthingBarTests.swift */; };
+		F1B020621B39E269006BC805 /* SyncthingBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EE75F91A3D76B70028E6DD /* SyncthingBar.swift */; };
 		F1B099071A3C40AD00B79D31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B099061A3C40AD00B79D31 /* AppDelegate.swift */; };
 		F1B0990B1A3C40AD00B79D31 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1B0990A1A3C40AD00B79D31 /* Images.xcassets */; };
-		F1B0991A1A3C40AE00B79D31 /* syncthing_barTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B099191A3C40AE00B79D31 /* syncthing_barTests.swift */; };
 		F1B099281A3C4FA800B79D31 /* LogWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B099271A3C4FA700B79D31 /* LogWindowController.swift */; };
 		F1B0992A1A3C764400B79D31 /* SyncthingRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B099291A3C764400B79D31 /* SyncthingRunner.swift */; };
 		F1B0992C1A3C77FC00B79D31 /* PortFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B0992B1A3C77FC00B79D31 /* PortFinder.swift */; };
-		F1BEE1451B18529B001B5F8E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1A4E42B1A4587C300602986 /* Main.storyboard */; };
 		F1BEE1461B185310001B5F8E /* LogWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1F8A6371A4016180049AFC1 /* LogWindow.xib */; };
 		F1C594E51A3ED8830048CF9F /* SyncthingLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C594E41A3ED8830048CF9F /* SyncthingLog.swift */; };
-		F1EE75FA1A3D76B70028E6DD /* SyncthingBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EE75F91A3D76B70028E6DD /* SyncthingBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,13 +45,13 @@
 		F11BC9B21A3E45E100360C2E /* SyncthingFolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncthingFolder.swift; sourceTree = "<group>"; };
 		F1A2BD421A6178620014473E /* syncthing-bar.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "syncthing-bar.pdf"; sourceTree = "<group>"; };
 		F1A4E42C1A4587C300602986 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "syncthing-bar/Base.lproj/Main.storyboard"; sourceTree = "<group>"; };
+		F1B0205E1B39D057006BC805 /* SyncthingBarTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncthingBarTests.swift; sourceTree = "<group>"; };
 		F1B099011A3C40AD00B79D31 /* syncthing-bar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "syncthing-bar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1B099051A3C40AD00B79D31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1B099061A3C40AD00B79D31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1B0990A1A3C40AD00B79D31 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F1B099131A3C40AE00B79D31 /* syncthing-barTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "syncthing-barTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1B099181A3C40AE00B79D31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F1B099191A3C40AE00B79D31 /* syncthing_barTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = syncthing_barTests.swift; sourceTree = "<group>"; };
 		F1B099271A3C4FA700B79D31 /* LogWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogWindowController.swift; sourceTree = "<group>"; };
 		F1B099291A3C764400B79D31 /* SyncthingRunner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncthingRunner.swift; sourceTree = "<group>"; };
 		F1B0992B1A3C77FC00B79D31 /* PortFinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortFinder.swift; sourceTree = "<group>"; };
@@ -139,8 +139,8 @@
 		F1B099161A3C40AE00B79D31 /* syncthing-barTests */ = {
 			isa = PBXGroup;
 			children = (
-				F1B099191A3C40AE00B79D31 /* syncthing_barTests.swift */,
 				F1B099171A3C40AE00B79D31 /* Supporting Files */,
+				F1B0205E1B39D057006BC805 /* SyncthingBarTests.swift */,
 			);
 			path = "syncthing-barTests";
 			sourceTree = "<group>";
@@ -242,11 +242,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F11BC9B11A3E20CA00360C2E /* syncthing in Resources */,
-				F1BEE1451B18529B001B5F8E /* Main.storyboard in Resources */,
 				830680AE1B1C448700B0B7A7 /* SettingsWindow.xib in Resources */,
+				F14B62FC1B39E2B90022C08F /* syncthing-bar.pdf in Resources */,
+				F14B62FD1B39E2F60022C08F /* Main.storyboard in Resources */,
 				F1BEE1461B185310001B5F8E /* LogWindow.xib in Resources */,
 				F1B0990B1A3C40AD00B79D31 /* Images.xcassets in Resources */,
-				F1A2BD431A6178620014473E /* syncthing-bar.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,11 +269,11 @@
 				F1B0992A1A3C764400B79D31 /* SyncthingRunner.swift in Sources */,
 				F1B099281A3C4FA800B79D31 /* LogWindowController.swift in Sources */,
 				F1B099071A3C40AD00B79D31 /* AppDelegate.swift in Sources */,
-				F1EE75FA1A3D76B70028E6DD /* SyncthingBar.swift in Sources */,
 				F1C594E51A3ED8830048CF9F /* SyncthingLog.swift in Sources */,
 				830680B01B1C801700B0B7A7 /* SyncthingSettings.swift in Sources */,
 				830680AC1B1C43D100B0B7A7 /* SettingsWindowController.swift in Sources */,
 				F11BC9B31A3E45E100360C2E /* SyncthingFolder.swift in Sources */,
+				F1B020621B39E269006BC805 /* SyncthingBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,7 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1B0991A1A3C40AE00B79D31 /* syncthing_barTests.swift in Sources */,
+				F1B0205F1B39D057006BC805 /* SyncthingBarTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,7 +392,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "syncthing-bar/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -404,7 +404,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "syncthing-bar/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

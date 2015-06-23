@@ -8,11 +8,11 @@
 
 import Foundation
 
-class SyncthingFolder {
+public class SyncthingFolder {
     var id: NSString
     var path: NSString
     
-    init(id: NSString, path: NSString) {
+    public init(id: NSString, path: NSString) {
         self.id = id
         self.path = path
     }
