@@ -41,6 +41,6 @@ class SyncthingBarTests: XCTestCase {
         let workspace = DummyWorkspace()
         syncthingBar.workspace = workspace
         syncthingBar.openFolderAction(sender)
-        XCTAssertEqual(workspace.openedUrl!.absoluteString!, "file:///der%20hans")
+        XCTAssertEqual(workspace.openedUrl!.absoluteString, "file:///der%20hans")
     }
 }

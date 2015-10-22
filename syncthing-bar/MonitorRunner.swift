@@ -66,7 +66,7 @@ class MonitorRunner: NSObject {
         let running_apps: [String] = self.getRunningAppNames()
         
         for monitor_app in self.apps {
-            if contains(running_apps, monitor_app) {
+            if running_apps.contains(monitor_app) {
                 let startStopData = ["pause": true]
                 notificationCenter.postNotificationName(StartStop, object: self, userInfo: startStopData)
                 self.activated = true
@@ -84,7 +84,7 @@ class MonitorRunner: NSObject {
     }
     
     func getRunningAppNames() -> [String] {
-        let r_apps = NSWorkspace().runningApplications as! [NSRunningApplication]
+        let r_apps = NSWorkspace().runningApplications 
         var r_app_names: [String] = []
         
         for r_app in r_apps {

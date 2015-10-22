@@ -43,8 +43,8 @@ class SyncthingRunner: NSObject {
     }
     
     func registerVersion() -> Bool {
-        var pipe : NSPipe = NSPipe()
-        var versionTask = NSTask()
+        let pipe : NSPipe = NSPipe()
+        let versionTask = NSTask()
         versionTask.launchPath = path as String
         versionTask.arguments = ["--version"]
         versionTask.standardOutput = pipe
@@ -54,16 +54,16 @@ class SyncthingRunner: NSObject {
         let versionOut = pipe.fileHandleForReading.readDataToEndOfFile()
         let versionString = NSString(data: versionOut, encoding: NSUTF8StringEncoding)
         
-        var regex = NSRegularExpression(pattern: "^syncthing v(\\d+)\\.(\\d+)\\.(\\d+)",
-            options: nil, error: nil)
-        var results = regex!.matchesInString(versionString! as String, options: nil, range: NSMakeRange(0, versionString!.length))
+        var regex = try? NSRegularExpression(pattern: "^syncthing v(\\d+)\\.(\\d+)\\.(\\d+)",
+            options: [])
+        var results = regex!.matchesInString(versionString! as String, options: [], range: NSMakeRange(0, versionString!.length))
         if results.count == 1 {
-            let major = versionString?.substringWithRange(results[0].rangeAtIndex(1)).toInt() as Int!
-            let minor = versionString?.substringWithRange(results[0].rangeAtIndex(2)).toInt() as Int!
-            let patch = versionString?.substringWithRange(results[0].rangeAtIndex(3)).toInt() as Int!
+            let major = Int((versionString?.substringWithRange(results[0].rangeAtIndex(1)))!) as Int!
+            let minor = Int((versionString?.substringWithRange(results[0].rangeAtIndex(2)))!) as Int!
+            let patch = Int((versionString?.substringWithRange(results[0].rangeAtIndex(3)))!) as Int!
             
             version = [ major, minor, patch ]
-            println("Syncthing version \(version![0]) \(version![1]) \(version![2])")
+            print("Syncthing version \(version![0]) \(version![1]) \(version![2])")
             return true
         } else {
             return false
@@ -71,12 +71,12 @@ class SyncthingRunner: NSObject {
     }
     
     func run() -> (String?) {
-        var pipe : NSPipe = NSPipe()
+        let pipe : NSPipe = NSPipe()
         let readHandle = pipe.fileHandleForReading
         
         task = NSTask()
         task!.launchPath = path as String
-        var environment = NSProcessInfo.processInfo().environment as! [String: String]
+        var environment = NSProcessInfo.processInfo().environment 
         environment["STNORESTART"] =  "1"
         task!.environment = environment
 
@@ -133,11 +133,11 @@ class SyncthingRunner: NSObject {
     func randomStringWithLength (len : Int) -> NSString {
         let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         
-        var randomString : NSMutableString = NSMutableString(capacity: len)
+        let randomString : NSMutableString = NSMutableString(capacity: len)
         
         for (var i=0; i < len; i++){
-            var length = UInt32 (letters.length)
-            var rand = arc4random_uniform(length)
+            let length = UInt32 (letters.length)
+            let rand = arc4random_uniform(length)
             randomString.appendFormat("%C", letters.characterAtIndex(Int(rand)))
         }
         
@@ -145,8 +145,8 @@ class SyncthingRunner: NSObject {
     }
     
     func createRequest(path: NSString) -> NSMutableURLRequest {
-        var url = NSURL(string: "http://localhost:\(self.port!)\(path)")
-        var request = NSMutableURLRequest(URL: url!)
+        let url = NSURL(string: "http://localhost:\(self.port!)\(path)")
+        let request = NSMutableURLRequest(URL: url!)
         request.addValue(self.apiKey! as String, forHTTPHeaderField: "X-API-Key")
         return request
     }
@@ -174,21 +174,21 @@ class SyncthingRunner: NSObject {
             }
             NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
                 if (error != nil) {
-                    println("Got error collecting repositories \(error)")
+                    print("Got error collecting repositories \(error)")
                     return;
                 }
                 let httpResponse = response as? NSHTTPURLResponse;
                 if httpResponse == nil {
-                    println("Unexpected response");
+                    print("Unexpected response");
                     return;
                 }
                 
                 if httpResponse!.statusCode != 200 {
-                    println("Got non 200 HTTP Response \(httpResponse!.statusCode)");
+                    print("Got non 200 HTTP Response \(httpResponse!.statusCode)");
                     return;
                 }
                 if (error == nil) {
-                    var jsonResult: NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as! NSDictionary
+                    var jsonResult: NSDictionary = (try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)) as! NSDictionary
                     
                     // mop: WTF am i typing :S
                     let folders = jsonResult[foldersElement] as? Array<AnyObject>
@@ -201,18 +201,18 @@ class SyncthingRunner: NSObject {
                         }).map({(object: AnyObject) -> (SyncthingFolder) in
                             let id = object[idElement] as? String
                             let pathTemp = object[pathElement] as? String
-                            let path = pathTemp?.stringByExpandingTildeInPath
+                            let path = ((pathTemp)! as NSString).stringByExpandingTildeInPath
                                                         
-                            return SyncthingFolder(id: id!, path: path!)
+                            return SyncthingFolder(id: id!, path: path)
                         })
                         
                         let folderData = ["folders": folderStructArr]
                         self.notificationCenter.postNotificationName(FoldersDetermined, object: self, userInfo: folderData)
                     } else {
-                        println("Failed to parse folders :(")
+                        print("Failed to parse folders :(")
                     }
                 } else {
-                    println("Got error collecting repositories \(error)")
+                    print("Got error collecting repositories \(error)")
                 }
             }
         }
@@ -228,7 +228,7 @@ class SyncthingRunner: NSObject {
                 
                 NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
                     if (error == nil) {
-                        var httpData = ["host": host!, "port": port!]
+                        let httpData = ["host": host!, "port": port!]
                         self.notificationCenter.postNotificationName(HttpChanged, object: self, userInfo: httpData)
                         if (self.portOpenTimer!.valid) {
                             self.portOpenTimer!.invalidate()
@@ -257,7 +257,7 @@ class SyncthingRunner: NSObject {
         
         stopTimers()
         
-        var current = NSDate()
+        let current = NSDate()
         // mop: retry 5 times :S
         if (lastFail != nil) {
             let timeDiff = current.timeIntervalSinceDate(lastFail!)
@@ -267,7 +267,7 @@ class SyncthingRunner: NSObject {
                 failCount++
             } else {
                 notificationCenter.postNotificationName(TooManyErrorsNotification, object: self)
-                println("Too many errors. Stopping")
+                print("Too many errors. Stopping")
                 return
             }
         }

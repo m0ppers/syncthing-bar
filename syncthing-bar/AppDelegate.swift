@@ -103,8 +103,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func httpChanged(notification: NSNotification) {
         if let info = notification.userInfo {
-            var host = notification.userInfo!["host"] as! NSString
-            var port = notification.userInfo!["port"] as! NSString
+            let host = notification.userInfo!["host"] as! NSString
+            let port = notification.userInfo!["port"] as! NSString
             
             self.syncthingBar!.settings!.port = port as String
             
@@ -128,13 +128,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if let settings_ntfc = notification.userInfo!["settings"] as? SyncthingSettings {
             
             var valid_port : Bool = true
-            var port_ntfc : String = settings_ntfc.port
+            let port_ntfc : String = settings_ntfc.port
             
-            if ((count(port_ntfc) < 3) || (count(port_ntfc) > 5)) {
+            if ((port_ntfc.characters.count < 3) || (port_ntfc.characters.count > 5)) {
                 valid_port = false
             }
             
-            var portFromString = port_ntfc.toInt()
+            let portFromString = Int(port_ntfc)
             if ((portFromString) != nil) {
                 if ((portFromString < 1000) || (portFromString > 65535)) {
                     valid_port = false
