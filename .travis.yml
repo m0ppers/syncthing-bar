@@ -1,5 +1,4 @@
 language: swift
 osx_image: xcode7.3
-
 xcode_project: syncthing-bar.xcodeproj
-xcode_scheme: syncthing-bar
+xcode_scheme: syncthing-barTests
