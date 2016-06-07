@@ -4,4 +4,4 @@ xcode_project: syncthing-bar.xcodeproj
 xcode_scheme: syncthing-bar
 
 script:
-  - xcodebuild build test -project syncthing-bar.xcodeproj.xcodeproj -scheme syncthing-bar | xcpretty
+  - xcodebuild build test -project syncthing-bar.xcodeproj -scheme syncthing-bar | xcpretty
