@@ -106,7 +106,7 @@ public class SyncthingBar: NSObject {
         var folderCount = 0
         for folder in folders {
             let folderItem : NSMenuItem = NSMenuItem()
-            folderItem.title = "Open \(folder.id) in Finder"
+            folderItem.title = "Open \(folder.label.length > 0 ? folder.label : folder.id) in Finder"
             folderItem.representedObject = folder
             folderItem.action = Selector("openFolderAction:")
             folderItem.enabled = true
