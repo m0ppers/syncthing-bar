@@ -31,10 +31,7 @@ class SyncthingBarTests: XCTestCase {
         super.tearDown()
     }
     
-    func testTravis() {
-        XCTAssertEqual(true, true)
-    }
-    /*
+
     func testOpenWhitespacedFolder() {
         let log : SyncthingLog = SyncthingLog()
         let syncthingBar = SyncthingBar(log: log);
@@ -46,5 +43,5 @@ class SyncthingBarTests: XCTestCase {
         syncthingBar.workspace = workspace
         syncthingBar.openFolderAction(sender)
         XCTAssertEqual(workspace.openedUrl!.absoluteString, "file:///der%20hans")
-    }*/
+    }
 }
