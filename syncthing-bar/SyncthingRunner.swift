@@ -153,26 +153,13 @@ class SyncthingRunner: NSObject {
     
     func collectRepositories(timer: NSTimer) {
         // mop: jaja copy paste...must fix somewhen
-        if let info = timer.userInfo as? Dictionary<String,String> {
-            let host = info["host"]
-            let port = info["port"]
-            
-            var request: NSMutableURLRequest
-            var idElement: NSString
+        if (timer.userInfo as? Dictionary<String,String>) != nil {
+            let request: NSMutableURLRequest = createRequest("/rest/system/config")
+            let idElement: NSString = "id"
             let labelElement: NSString = "label"
-            var pathElement: NSString
-            var foldersElement: NSString
-            if version![0] == 0 && version![1] == 10 {
-                request = createRequest("/rest/config")
-                idElement = "ID"
-                pathElement = "Path"
-                foldersElement = "Folders"
-            } else {
-                request = createRequest("/rest/system/config")
-                idElement = "id"
-                pathElement = "path"
-                foldersElement = "folders"
-            }
+            let pathElement: NSString = "path"
+            let foldersElement: NSString = "folders"
+            
             NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
                 if (error != nil) {
                     print("Got error collecting repositories \(error)")
@@ -189,7 +176,7 @@ class SyncthingRunner: NSObject {
                     return;
                 }
                 if (error == nil) {
-                    var jsonResult: NSDictionary = (try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)) as! NSDictionary
+                    let jsonResult: NSDictionary = (try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers)) as! NSDictionary
                     
                     // mop: WTF am i typing :S
                     let folders = jsonResult[foldersElement] as? Array<AnyObject>
@@ -203,13 +190,8 @@ class SyncthingRunner: NSObject {
                             let id = object[idElement] as? String
                             let pathTemp = object[pathElement] as? String
                             let path = ((pathTemp)! as NSString).stringByExpandingTildeInPath
-                            
-                            if (self.version![0] == 0 && self.version![1] == 10) {
-                                // support API version 0.10
-                                return SyncthingFolder(id: id!, path: path)
-                            }
-                            
                             let label = object[labelElement] as? String
+                            
                             return SyncthingFolder(id: id!, path: path, label: label!)
                         })
                         

@@ -36,7 +36,7 @@ class SyncthingBarTests: XCTestCase {
         let syncthingBar = SyncthingBar(log: log);
         
         var sender = NSMenuItem();
-        sender.representedObject = SyncthingFolder(id: NSString(string: "1"), path: NSString(string: "/der hans"));
+        sender.representedObject = SyncthingFolder(id: NSString(string: "1"), path: NSString(string: "/der hans"), label: NSString(string: "testung"));
         
         let workspace = DummyWorkspace()
         syncthingBar.workspace = workspace
