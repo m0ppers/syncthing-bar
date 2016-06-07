@@ -159,6 +159,7 @@ class SyncthingRunner: NSObject {
             
             var request: NSMutableURLRequest
             var idElement: NSString
+            let labelElement: NSString = "label"
             var pathElement: NSString
             var foldersElement: NSString
             if version![0] == 0 && version![1] == 10 {
@@ -202,8 +203,14 @@ class SyncthingRunner: NSObject {
                             let id = object[idElement] as? String
                             let pathTemp = object[pathElement] as? String
                             let path = ((pathTemp)! as NSString).stringByExpandingTildeInPath
-                                                        
-                            return SyncthingFolder(id: id!, path: path)
+                            
+                            if (self.version![0] == 0 && self.version![1] == 10) {
+                                // support API version 0.10
+                                return SyncthingFolder(id: id!, path: path)
+                            }
+                            
+                            let label = object[labelElement] as? String
+                            return SyncthingFolder(id: id!, path: path, label: label!)
                         })
                         
                         let folderData = ["folders": folderStructArr]
