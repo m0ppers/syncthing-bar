@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SettingsWindowController" customModule="syncthing_bar" customModuleProvider="target">
@@ -12,6 +11,7 @@
                 <outlet property="invert_icon_check" destination="0zi-6z-2oL" id="qWU-bu-tKD"/>
                 <outlet property="monitor_apps" destination="PN5-r4-f6J" id="DrC-YB-RUV"/>
                 <outlet property="monitoring_check" destination="aFe-DX-Hqt" id="hTE-qx-Zp5"/>
+                <outlet property="pause_on_battery_check" destination="BTU-hK-vdE" id="rBF-vn-s74"/>
                 <outlet property="port_field" destination="xQS-9g-fs7" id="3mf-iB-tiA"/>
             </connections>
         </customObject>
@@ -20,14 +20,14 @@
         <window title="Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" texturedBackground="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="1024" y="876" width="480" height="200"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+            <rect key="contentRect" x="1024" y="876" width="439" height="223"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="-1" width="480" height="200"/>
+                <rect key="frame" x="0.0" y="0.0" width="439" height="223"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ob2-fJ-ak6">
-                        <rect key="frame" x="18" y="0.0" width="444" height="67"/>
+                        <rect key="frame" x="18" y="20" width="403" height="51"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="ANx-vT-toL">
                             <font key="font" metaFont="system"/>
                             <string key="title">Info: These are syncthing-bar settings to configure the menu-bar application. If you are looking for the syncthing settings, please go through the web-ui (click on "Open-UI").</string>
@@ -36,7 +36,7 @@
                         </textFieldCell>
                     </textField>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O7r-Nw-p5I">
-                        <rect key="frame" x="18" y="142" width="218" height="14"/>
+                        <rect key="frame" x="18" y="165" width="218" height="14"/>
                         <buttonCell key="cell" type="check" title="Black &amp; White (transparent icon)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="mqq-PO-qg2">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
@@ -46,7 +46,7 @@
                         </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ssr-YH-4rb">
-                        <rect key="frame" x="21" y="92" width="34" height="17"/>
+                        <rect key="frame" x="21" y="115" width="34" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Port:" id="QND-KO-oQ8">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -54,7 +54,7 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xQS-9g-fs7">
-                        <rect key="frame" x="61" y="89" width="64" height="22"/>
+                        <rect key="frame" x="61" y="112" width="64" height="22"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="8084" bezelStyle="round" id="mV2-st-Pbi">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -65,13 +65,13 @@
                         </connections>
                     </textField>
                     <box verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="ht3-9F-r6L">
-                        <rect key="frame" x="17" y="73" width="443" height="5"/>
+                        <rect key="frame" x="20" y="77" width="399" height="5"/>
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <font key="titleFont" metaFont="system"/>
                     </box>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pf2-cZ-4IC">
-                        <rect key="frame" x="18" y="164" width="141" height="18"/>
+                        <rect key="frame" x="18" y="187" width="141" height="18"/>
                         <buttonCell key="cell" type="check" title="Confirm before Exit" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="CgB-Of-VLe">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
@@ -81,7 +81,7 @@
                         </connections>
                     </button>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0zi-6z-2oL">
-                        <rect key="frame" x="33" y="121" width="128" height="14"/>
+                        <rect key="frame" x="33" y="144" width="128" height="14"/>
                         <buttonCell key="cell" type="check" title="Use inverted icon" bezelStyle="regularSquare" imagePosition="left" inset="2" id="9cX-4U-uVE">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
@@ -91,7 +91,7 @@
                         </connections>
                     </button>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aFe-DX-Hqt">
-                        <rect key="frame" x="269" y="164" width="160" height="18"/>
+                        <rect key="frame" x="240" y="163" width="160" height="18"/>
                         <buttonCell key="cell" type="check" title="Pause on Applications" bezelStyle="regularSquare" imagePosition="left" inset="2" id="vjx-P7-lXj">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
@@ -101,7 +101,7 @@
                         </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kk1-0x-5ko">
-                        <rect key="frame" x="287" y="87" width="154" height="17"/>
+                        <rect key="frame" x="258" y="88" width="154" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Requires System Monitoring" id="QNL-j9-oXI">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -109,7 +109,7 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PN5-r4-f6J">
-                        <rect key="frame" x="287" y="106" width="159" height="52"/>
+                        <rect key="frame" x="260" y="109" width="159" height="52"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="iPhoto; iMovie Lightroom" drawsBackground="YES" id="ltf-No-wAB">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -119,9 +119,19 @@
                             <action selector="monitor_apps_changed:" target="-2" id="BDB-mt-WtZ"/>
                         </connections>
                     </textField>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BTU-hK-vdE">
+                        <rect key="frame" x="240" y="187" width="125" height="18"/>
+                        <buttonCell key="cell" type="check" title="Pause on battery" bezelStyle="regularSquare" imagePosition="left" inset="2" id="mgv-FP-vSx">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="pause_on_battery_checked:" target="-2" id="2bT-Ml-Hsl"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="466" y="393"/>
+            <point key="canvasLocation" x="445.5" y="404.5"/>
         </window>
         <button verticalHuggingPriority="750" id="Vsu-Db-VOd">
             <rect key="frame" x="0.0" y="0.0" width="82" height="32"/>

@@ -29,6 +29,9 @@ class SyncthingSettings {
     var monitor_apps_key: String = "MonitorApps"
     var monitor_apps = "iPhoto; iMovie\nLightroom"
     
+    var pause_on_battery_key: String = "PauseOnBattery"
+    var pause_on_battery: Bool = false
+    
     init() {
         self.bw_icon_key = "BlackWhiteIcon"
         self.invert_icon_key = "InvertIcon"
@@ -36,6 +39,7 @@ class SyncthingSettings {
         self.confirm_exit_key = "ConfirmExit"
         self.monitoring_key = "Monitoring"
         self.monitor_apps_key = "MonitorApps"
+        self.pause_on_battery_key = "PauseOnBattery"
         
         self.bw_icon = true
         self.invert_icon = false
@@ -43,17 +47,19 @@ class SyncthingSettings {
         self.confirm_exit = true
         self.monitoring = false
         self.monitor_apps = "iPhoto; iMovie,\niTunes, Lightroom"
+        self.pause_on_battery = false
         
         self.loadSettings()
     }
     
-    init(bw_icon: Bool, invert_icon: Bool, port: String, confirm_exit: Bool, monitoring: Bool, monitor_apps: String) {
+    init(bw_icon: Bool, invert_icon: Bool, port: String, confirm_exit: Bool, monitoring: Bool, monitor_apps: String, pause_on_battery: Bool) {
         self.bw_icon = bw_icon
         self.invert_icon = invert_icon
         self.port = port
         self.confirm_exit = confirm_exit
         self.monitoring = monitoring
         self.monitor_apps = monitor_apps
+        self.pause_on_battery = pause_on_battery
         
         self.saveSettings()
     }
@@ -84,6 +90,10 @@ class SyncthingSettings {
         if let monitor_apps_string = defaults.valueForKey(self.monitor_apps_key) as? String {
             self.monitor_apps = monitor_apps_string
         }
+        
+        if let pause_on_battery = defaults.valueForKey(self.pause_on_battery_key) as? Bool {
+            self.pause_on_battery = pause_on_battery
+        }
     }
     
     func saveSettings() {
@@ -97,6 +107,7 @@ class SyncthingSettings {
         defaults.setValue(self.confirm_exit, forKey: self.confirm_exit_key)
         defaults.setValue(self.monitoring, forKey: self.monitoring_key)
         defaults.setValue(self.monitor_apps, forKey: self.monitor_apps_key)
+        defaults.setValue(self.pause_on_battery, forKey: self.pause_on_battery_key)
         
         defaults.synchronize()
     }
@@ -129,5 +140,11 @@ class SyncthingSettings {
         }
         
         wndCtrl.monitor_apps?.stringValue = self.monitor_apps as String
+        
+        if (self.pause_on_battery) {
+            wndCtrl.pause_on_battery_check?.state = NSOnState
+        } else {
+            wndCtrl.pause_on_battery_check?.state = NSOffState
+        }
     }
 }

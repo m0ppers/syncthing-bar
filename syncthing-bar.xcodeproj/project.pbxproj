@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B403DDA1D09C1F900A4AB93 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B403DD91D09C1F900A4AB93 /* IOKit.framework */; };
+		2B403DDF1D09C28E00A4AB93 /* BatteryMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B403DDE1D09C28E00A4AB93 /* BatteryMonitor.swift */; };
 		830680AC1B1C43D100B0B7A7 /* SettingsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830680AB1B1C43D100B0B7A7 /* SettingsWindowController.swift */; };
 		830680AE1B1C448700B0B7A7 /* SettingsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 830680AD1B1C448700B0B7A7 /* SettingsWindow.xib */; };
 		830680B01B1C801700B0B7A7 /* SyncthingSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830680AF1B1C801700B0B7A7 /* SyncthingSettings.swift */; };
@@ -37,6 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2B403DD91D09C1F900A4AB93 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		2B403DDB1D09C25B00A4AB93 /* syncthing-bar-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "syncthing-bar-Bridging-Header.h"; sourceTree = "<group>"; };
+		2B403DDE1D09C28E00A4AB93 /* BatteryMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BatteryMonitor.swift; sourceTree = "<group>"; };
 		830680AB1B1C43D100B0B7A7 /* SettingsWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsWindowController.swift; sourceTree = "<group>"; };
 		830680AD1B1C448700B0B7A7 /* SettingsWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsWindow.xib; sourceTree = "<group>"; };
 		830680AF1B1C801700B0B7A7 /* SyncthingSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncthingSettings.swift; sourceTree = "<group>"; };
@@ -65,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B403DDA1D09C1F900A4AB93 /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +95,7 @@
 		F1B098F81A3C40AD00B79D31 = {
 			isa = PBXGroup;
 			children = (
+				2B403DD91D09C1F900A4AB93 /* IOKit.framework */,
 				F1F6D6371A41E58400E972D0 /* Resources */,
 				F11BC9AF1A3E202700360C2E /* binary */,
 				F1B099031A3C40AD00B79D31 /* syncthing-bar */,
@@ -124,6 +131,8 @@
 				830680AB1B1C43D100B0B7A7 /* SettingsWindowController.swift */,
 				830680AF1B1C801700B0B7A7 /* SyncthingSettings.swift */,
 				8310FB881B1F3DB500225E47 /* MonitorRunner.swift */,
+				2B403DDB1D09C25B00A4AB93 /* syncthing-bar-Bridging-Header.h */,
+				2B403DDE1D09C28E00A4AB93 /* BatteryMonitor.swift */,
 			);
 			path = "syncthing-bar";
 			sourceTree = "<group>";
@@ -206,7 +215,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftMigration = 0710;
-				LastSwiftUpdateCheck = 0710;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = mop;
 				TargetAttributes = {
@@ -268,6 +277,7 @@
 			files = (
 				8310FB891B1F3DB500225E47 /* MonitorRunner.swift in Sources */,
 				F1B0992C1A3C77FC00B79D31 /* PortFinder.swift in Sources */,
+				2B403DDF1D09C28E00A4AB93 /* BatteryMonitor.swift in Sources */,
 				F1B0992A1A3C764400B79D31 /* SyncthingRunner.swift in Sources */,
 				F1B099281A3C4FA800B79D31 /* LogWindowController.swift in Sources */,
 				F1B099071A3C40AD00B79D31 /* AppDelegate.swift in Sources */,
@@ -392,12 +402,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "syncthing-bar/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = "koeln.mop.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "syncthing-bar/syncthing-bar-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -405,12 +418,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "syncthing-bar/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = "koeln.mop.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "syncthing-bar/syncthing-bar-Bridging-Header.h";
 			};
 			name = Release;
 		};

@@ -16,6 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var syncthingBar : SyncthingBar?
     var log : SyncthingLog = SyncthingLog()
     var monitor : MonitorRunner?
+    var batteryMonitor : BatteryMonitor?
     
     func applicationWillFinishLaunching(aNotification: NSNotification?) {
         NSApp.setActivationPolicy(NSApplicationActivationPolicy.Accessory)
@@ -43,9 +44,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             self.monitor?.startMonitor()
         }
         
+        self.batteryMonitor = BatteryMonitor()
+        if self.syncthingBar!.settings!.pause_on_battery {
+            self.batteryMonitor?.startMonitor()
+        }
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "settingsSet:", name: SettingsSet, object: syncthingBar?.setter)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "startStop:", name: StartStop, object: syncthingBar)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "startStop:", name: StartStop, object: monitor)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "startStop:", name: StartStop, object: batteryMonitor)
     }
     
     func stop() {
@@ -160,6 +167,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             self.monitor?.startMonitor()
         } else {
             self.monitor?.stopMonitor()
+        }
+        
+        if self.syncthingBar!.settings!.pause_on_battery {
+            self.batteryMonitor?.startMonitor()
+        } else {
+            self.batteryMonitor?.stopMonitor()
         }
     }
     

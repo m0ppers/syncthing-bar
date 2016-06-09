@@ -15,6 +15,7 @@ class SettingsWindowController: NSWindowController {
     @IBOutlet var confirm_exit_check: NSButton!
     @IBOutlet var monitoring_check: NSButton!
     @IBOutlet var monitor_apps: NSTextField!
+    @IBOutlet var pause_on_battery_check: NSButton!
     
     var settings: SyncthingSettings = SyncthingSettings()
     
@@ -90,6 +91,12 @@ class SettingsWindowController: NSWindowController {
     
     @IBAction func monitor_apps_changed(sender: NSTextField) {
         self.settings.monitor_apps = sender.stringValue
+        
+        postSettings()
+    }
+    
+    @IBAction func pause_on_battery_checked(sender: NSButton) {
+        self.settings.pause_on_battery = (sender.state == NSOnState)
         
         postSettings()
     }
