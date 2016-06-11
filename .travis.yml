@@ -1,5 +1,5 @@
--language: objective-c
- -osx_image: xcode7.3
- -
- -script:
- -  - xcodebuild build test -project syncthing-bar.xcodeproj -scheme syncthing-bar
+language: objective-c
+osx_image: xcode7.3
+
+script:
+  - xcodebuild build test -project syncthing-bar.xcodeproj -scheme syncthing-bar
