@@ -1,4 +1,4 @@
-syncthing-bar
+syncthing-bar [![Build Status](https://travis-ci.org/m0ppers/syncthing-bar.svg?branch=master)](https://travis-ci.org/m0ppers/syncthing-bar)
 =============
 
 A little statusbar for http://syncthing.net/ on OSX
