@@ -18,12 +18,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var monitor : MonitorRunner?
     var batteryMonitor : BatteryMonitor?
     
-    func applicationWillFinishLaunching(aNotification: NSNotification?) {
+    func applicationWillFinishLaunching(aNotification: NSNotification) {
         NSApp.setActivationPolicy(NSApplicationActivationPolicy.Accessory)
     }
     
     
-    func applicationDidFinishLaunching(aNotification: NSNotification?) {
+    func applicationDidFinishLaunching(aNotification: NSNotification) {
         syncthingBar = SyncthingBar(log: log)
         runner = SyncthingRunner(log: log)
         let result = runner!.ensureRunning()
@@ -32,12 +32,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             alert.addButtonWithTitle("Ok :(")
             alert.messageText = "Got a fatal error: \(result!) :( Exiting"
             alert.alertStyle = NSAlertStyle.WarningAlertStyle
-            let response = alert.runModal()
+            _ = alert.runModal()
             self.quit()
         }
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "tooManyErrors:", name: TooManyErrorsNotification, object: runner)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "foldersDetermined:", name: FoldersDetermined, object: runner)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "httpChanged:", name: HttpChanged, object: runner)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppDelegate.tooManyErrors(_:)), name: TooManyErrorsNotification, object: runner)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppDelegate.foldersDetermined(_:)), name: FoldersDetermined, object: runner)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppDelegate.httpChanged(_:)), name: HttpChanged, object: runner)
         
         self.monitor = MonitorRunner(monitor_apps: syncthingBar?.settings?.monitor_apps)
         if self.syncthingBar!.settings!.monitoring {
@@ -49,10 +49,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             self.batteryMonitor?.startMonitor()
         }
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "settingsSet:", name: SettingsSet, object: syncthingBar?.setter)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "startStop:", name: StartStop, object: syncthingBar)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "startStop:", name: StartStop, object: monitor)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "startStop:", name: StartStop, object: batteryMonitor)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppDelegate.settingsSet(_:)), name: SettingsSet, object: syncthingBar?.setter)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppDelegate.startStop(_:)), name: StartStop, object: syncthingBar)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppDelegate.startStop(_:)), name: StartStop, object: monitor)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppDelegate.startStop(_:)), name: StartStop, object: batteryMonitor)
     }
     
     func stop() {
@@ -96,7 +96,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         alert.messageText = "Syncthing could not run. There were too many errors. Check log, and restart :("
         alert.alertStyle = NSAlertStyle.WarningAlertStyle
         
-        let response = alert.runModal()
+        _ = alert.runModal()
     }
     
     func genericError(errorMessage: String) {
@@ -105,11 +105,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         alert.messageText = errorMessage
         alert.alertStyle = NSAlertStyle.WarningAlertStyle
         
-        let response = alert.runModal()
+        _ = alert.runModal()
     }
     
     func httpChanged(notification: NSNotification) {
-        if let info = notification.userInfo {
+        if notification.userInfo != nil {
             let host = notification.userInfo!["host"] as! NSString
             let port = notification.userInfo!["port"] as! NSString
             
@@ -129,9 +129,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func settingsSet(notification: NSNotification) {
         // ctp: maybe we should have a Settings class ...
-        
-        var settings = self.syncthingBar?.settings
-        
         if let settings_ntfc = notification.userInfo!["settings"] as? SyncthingSettings {
             
             var valid_port : Bool = true

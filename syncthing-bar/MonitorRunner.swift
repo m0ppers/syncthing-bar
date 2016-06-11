@@ -48,7 +48,7 @@ class MonitorRunner: NSObject {
         }
         //print("Starting TIMER for app monitor.\n")
         let appData : [String: String] = ["":""];
-        monitorTimer = NSTimer.scheduledTimerWithTimeInterval(self.timer_interval, target: self, selector: "checkApps:", userInfo: appData, repeats: true)
+        monitorTimer = NSTimer.scheduledTimerWithTimeInterval(self.timer_interval, target: self, selector: #selector(MonitorRunner.checkApps(_:)), userInfo: appData, repeats: true)
     }
     
     func stopMonitor() {

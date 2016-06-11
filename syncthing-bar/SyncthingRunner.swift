@@ -38,8 +38,8 @@ class SyncthingRunner: NSObject {
         
         super.init()
     
-        notificationCenter.addObserver(self, selector: "taskStopped:", name: NSTaskDidTerminateNotification, object: task)
-        notificationCenter.addObserver(self, selector: "receivedOut:", name: NSFileHandleDataAvailableNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(SyncthingRunner.taskStopped(_:)), name: NSTaskDidTerminateNotification, object: task)
+        notificationCenter.addObserver(self, selector: #selector(SyncthingRunner.receivedOut(_:)), name: NSFileHandleDataAvailableNotification, object: nil)
     }
     
     func registerVersion() -> Bool {
@@ -54,7 +54,7 @@ class SyncthingRunner: NSObject {
         let versionOut = pipe.fileHandleForReading.readDataToEndOfFile()
         let versionString = NSString(data: versionOut, encoding: NSUTF8StringEncoding)
         
-        var regex = try? NSRegularExpression(pattern: "^syncthing v(\\d+)\\.(\\d+)\\.(\\d+)",
+        let regex = try? NSRegularExpression(pattern: "^syncthing v(\\d+)\\.(\\d+)\\.(\\d+)",
             options: [])
         var results = regex!.matchesInString(versionString! as String, options: [], range: NSMakeRange(0, versionString!.length))
         if results.count == 1 {
@@ -92,7 +92,7 @@ class SyncthingRunner: NSObject {
         
         
         // mop: wait until port is open :O
-        portOpenTimer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "checkPortOpen:", userInfo: httpData, repeats: true)
+        portOpenTimer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(SyncthingRunner.checkPortOpen(_:)), userInfo: httpData, repeats: true)
         return nil
     }
     
@@ -135,7 +135,7 @@ class SyncthingRunner: NSObject {
         
         let randomString : NSMutableString = NSMutableString(capacity: len)
         
-        for (var i=0; i < len; i++){
+        for _ in 1...len {
             let length = UInt32 (letters.length)
             let rand = arc4random_uniform(length)
             randomString.appendFormat("%C", letters.characterAtIndex(Int(rand)))
@@ -212,7 +212,7 @@ class SyncthingRunner: NSObject {
             if let info = timer.userInfo as? Dictionary<String,String> {
                 let host = info["host"]
                 let port = info["port"]
-                let url = NSURL(string: "http://\(host!):\(port!)/rest/version")
+
                 let request = createRequest("/rest/version")
                 
                 NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {(response, data, error) in
@@ -222,7 +222,7 @@ class SyncthingRunner: NSObject {
                         if (self.portOpenTimer!.valid) {
                             self.portOpenTimer!.invalidate()
                         }
-                        self.repositoryCollectorTimer = NSTimer.scheduledTimerWithTimeInterval(10.0, target: self, selector: "collectRepositories:", userInfo: info, repeats: true)
+                        self.repositoryCollectorTimer = NSTimer.scheduledTimerWithTimeInterval(10.0, target: self, selector: #selector(SyncthingRunner.collectRepositories(_:)), userInfo: info, repeats: true)
                         self.repositoryCollectorTimer!.fire()
                     }
                 }
@@ -236,7 +236,6 @@ class SyncthingRunner: NSObject {
             return
         }
         
-        var httpData = []
         self.notificationCenter.postNotificationName(HttpChanged, object: self)
         
         if (self.paused) {
@@ -253,7 +252,7 @@ class SyncthingRunner: NSObject {
             if (timeDiff > 5) {
                 failCount = 0
             } else if (failCount <= 5) {
-                failCount++
+                failCount += 1
             } else {
                 notificationCenter.postNotificationName(TooManyErrorsNotification, object: self)
                 print("Too many errors. Stopping")

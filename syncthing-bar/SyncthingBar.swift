@@ -40,13 +40,13 @@ public class SyncthingBar: NSObject {
         
         openUIItem = NSMenuItem()
         openUIItem.title = "Open UI"
-        openUIItem.action = Selector("openUIAction:")
+        openUIItem.action = #selector(SyncthingBar.openUIAction(_:))
         openUIItem.enabled = false
         menu.addItem(openUIItem)
         
         startStopSyncthingItem = NSMenuItem()
         startStopSyncthingItem.title = "Stop Syncthing"
-        startStopSyncthingItem.action = Selector("startStopSyncthingAction:")
+        startStopSyncthingItem.action = #selector(SyncthingBar.startStopSyncthingAction(_:))
         startStopSyncthingItem.enabled = false
         menu.addItem(startStopSyncthingItem)
         
@@ -54,7 +54,7 @@ public class SyncthingBar: NSObject {
         
         let openLogItem : NSMenuItem = NSMenuItem()
         openLogItem.title = "Show Log"
-        openLogItem.action = Selector("openLogAction:")
+        openLogItem.action = #selector(SyncthingBar.openLogAction(_:))
         openLogItem.enabled = true
         menu.addItem(openLogItem)
         
@@ -63,7 +63,7 @@ public class SyncthingBar: NSObject {
         
         let openSettingsItem : NSMenuItem = NSMenuItem()
         openSettingsItem.title = "Settings"
-        openSettingsItem.action = Selector("openSettingsAction:")
+        openSettingsItem.action = #selector(SyncthingBar.openSettingsAction(_:))
         openSettingsItem.enabled = true
         menu.addItem(openSettingsItem)
         
@@ -108,11 +108,12 @@ public class SyncthingBar: NSObject {
             let folderItem : NSMenuItem = NSMenuItem()
             folderItem.title = "Open \(folder.label.length > 0 ? folder.label : folder.id) in Finder"
             folderItem.representedObject = folder
-            folderItem.action = Selector("openFolderAction:")
+            folderItem.action = #selector(SyncthingBar.openFolderAction(_:))
             folderItem.enabled = true
             folderItem.tag = FolderTag
             folderItem.target = self
-            menu.insertItem(folderItem, atIndex: startInsertIndex + folderCount++)
+            menu.insertItem(folderItem, atIndex: startInsertIndex + folderCount)
+            folderCount = folderCount + 1
         }
         
         // mop: only add if there were folders (we already have a separator after "Open UI")
