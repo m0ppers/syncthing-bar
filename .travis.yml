@@ -2,5 +2,6 @@ language: objective-c
 osx_image: xcode7.3
 
 script:
+  - brew install xctool
   - xcodebuild build -configuration Debug -project syncthing-bar.xcodeproj -scheme syncthing-bar -destination 'platform=OS X,arch=x86_64'
-  - xcodebuild test -scheme syncthing-bar  
+  - xctest -scheme syncthing-bar  
